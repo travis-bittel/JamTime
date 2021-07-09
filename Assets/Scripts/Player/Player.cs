@@ -25,6 +25,30 @@ public enum PlayerState
 
 public class Player : MonoBehaviour
 {
+	#region Singleton Code
+	private static Player _instance;
+
+	public static Player Instance { get { return _instance; } }
+
+	private void Awake()
+	{
+		if (_instance != null && _instance != this)
+		{
+			Debug.LogError("Attempted to Instantiate multiple Players in one scene!");
+			Destroy(this.gameObject);
+		}
+		else
+		{
+			_instance = this;
+		}
+	}
+
+	private void OnDestroy()
+	{
+		if (this == _instance) { _instance = null; }
+	}
+	#endregion
+
 	public PlayerFacing direction;
 	public PlayerState state = PlayerState.IDLE;
 	public float speedScalar;
@@ -56,4 +80,12 @@ public class Player : MonoBehaviour
 		Vector2 moveDir = value.Get<Vector2>();
 		velocity = new Vector3(moveDir.x, moveDir.y, 0);
 	}
+	public void OnInteract()
+    {
+
+    }
+	public void OnToggleVisionMode()
+    {
+
+    }
 }
