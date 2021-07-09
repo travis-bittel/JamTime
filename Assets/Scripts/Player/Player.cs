@@ -23,6 +23,14 @@ public enum PlayerState
 	OTHER
 }
 
+public enum VisionMode
+{
+	DEFAULT,
+	RED,
+	YELLOW,
+	BLUE
+}
+
 public class Player : MonoBehaviour
 {
 	#region Singleton Code
@@ -35,7 +43,7 @@ public class Player : MonoBehaviour
 		if (_instance != null && _instance != this)
 		{
 			Debug.LogError("Attempted to Instantiate multiple Players in one scene!");
-			Destroy(this.gameObject);
+			Destroy(gameObject);
 		}
 		else
 		{
@@ -79,6 +87,7 @@ public class Player : MonoBehaviour
 	{
 		Vector2 moveDir = value.Get<Vector2>();
 		velocity = new Vector3(moveDir.x, moveDir.y, 0);
+		direction = GetFacingDirectionFromVelocity();
 	}
 	public void OnInteract()
     {
@@ -87,5 +96,22 @@ public class Player : MonoBehaviour
 	public void OnToggleVisionMode()
     {
 
+    }
+
+	private PlayerFacing GetFacingDirectionFromVelocity()
+    {
+		if (velocity.x > 0)
+        {
+			return PlayerFacing.RIGHT;
+        } else if (velocity.x < 0)
+        {
+			return PlayerFacing.LEFT;
+		} else if (velocity.y > 0)
+        {
+			return PlayerFacing.UP;
+		} else
+        {
+			return PlayerFacing.DOWN;
+		}
     }
 }
