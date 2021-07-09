@@ -28,15 +28,29 @@ public class GameManager : MonoBehaviour
 	}
 	#endregion
 
-	// Start is called before the first frame update
-	void Start()
+	private VisionMode _currentVisionMode;
+
+	public Room currentRoom;
+
+	public VisionMode CurrentVisionMode
     {
-        
+		get { return _currentVisionMode; }
+		set
+        {
+			_currentVisionMode = value;
+			if (currentRoom == null)
+            {
+				Debug.LogError("GameManager's currentRoom was null!");
+            } else
+            {
+				currentRoom.UpdateRoomObjectVisibility();
+
+			}
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+		CurrentVisionMode = VisionMode.DEFAULT;
     }
 }

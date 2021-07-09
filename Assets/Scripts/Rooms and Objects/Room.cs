@@ -5,15 +5,19 @@ using UnityEngine;
 // Represents a room in the game. Holds a list of the objects inside of the room.
 public class Room : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public List<RoomObject> roomObjects;
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateRoomObjectVisibility()
     {
-        
+        if (roomObjects != null)
+        {
+            foreach (RoomObject roomObject in roomObjects)
+            {
+                if (roomObject != null)
+                {
+                    roomObject.UpdateVisibility();
+                }
+            }
+        }
     }
 }

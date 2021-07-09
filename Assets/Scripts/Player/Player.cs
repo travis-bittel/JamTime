@@ -62,6 +62,8 @@ public class Player : MonoBehaviour
 	public float speedScalar;
 	public Vector3 velocity;
 
+	public VisionMode heldJamColor; // The color of the jam the player is currently carrying
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -95,7 +97,13 @@ public class Player : MonoBehaviour
     }
 	public void OnToggleVisionMode()
     {
-
+		if (GameManager.Instance.CurrentVisionMode != heldJamColor)
+        {
+			GameManager.Instance.CurrentVisionMode = heldJamColor;
+		} else
+        {
+			GameManager.Instance.CurrentVisionMode = VisionMode.DEFAULT;
+		}
     }
 
 	private PlayerFacing GetFacingDirectionFromVelocity()
