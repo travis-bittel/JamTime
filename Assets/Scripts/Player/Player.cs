@@ -49,7 +49,6 @@ public class Player : MonoBehaviour
 	// Happens onPress and Release.
 	public void OnMove(InputValue value)
 	{
-		Debug.Log("Henlo");
 		Vector2 moveDir = value.Get<Vector2>();
 		speed = new Vector3(moveDir.x, moveDir.y, 0);
 	}
