@@ -105,8 +105,7 @@ public class SpoonBehaviour : MonoBehaviour
         _instance = this;
         dirLog = new List<Vector3>();
         dirLog.Add(Vector3.zero);
-
-        Cursor.visible = false;
+        lastPos = transform.position;
     }
 
     int measureSeg = 1; // frames per measurement of mouse
@@ -114,6 +113,7 @@ public class SpoonBehaviour : MonoBehaviour
     JamHistory jh = null;
 
     int jColUpdateSeg = 3;
+    Vector3 lastPos = Vector3.zero;
     void Update()
     {
         // calculate mouse position per frame
@@ -159,11 +159,11 @@ public class SpoonBehaviour : MonoBehaviour
 
         if (inJar)
         {
-            getJamInJar(dm);
+            getJamInJar(transform.position - lastPos);
         }// spill jam
         else if (jam > 0)
         {
-            if ((dm.magnitude) / Time.deltaTime > jam_spillage)
+            if (dm.magnitude / Time.deltaTime > jam_spillage)
             {
                 spillJam(dm / Time.deltaTime);
             }
@@ -193,9 +193,16 @@ public class SpoonBehaviour : MonoBehaviour
             }
             
         }
+
+        lastPos = transform.position;
     }
 
-    private void OnDestroy()
+    private void OnBecameVisible()
+    {
+        Cursor.visible = false;
+    }
+
+    private void OnBecameInvisible()
     {
         Cursor.visible = true;
     }
@@ -203,8 +210,8 @@ public class SpoonBehaviour : MonoBehaviour
     public void getJamInJar(Vector3 dMPos)
     {
         if (jh != null) {
-            jh.update(dMPos);
-            jam = jh.netDown * -0.33f;
+            jh.update(avg_spd, jam_spillage);
+            jam = jh.netDown;
         }
         else
         {
@@ -236,6 +243,7 @@ public class SpoonBehaviour : MonoBehaviour
     {
         Debug.Log("oops, jam spilled...");
         GameObject newJam = Instantiate(jamAnchor);
+        newJam.AddComponent<Destroyable>();
 
         Rigidbody2D jamRig = newJam.AddComponent<Rigidbody2D>();
         jamRig.transform.position = transform.position;
@@ -264,8 +272,9 @@ class JamHistory
     public VisionMode jType = VisionMode.DEFAULT;
 
     // return if currently in downstroke
-    public bool update(Vector3 dMPos)
+    public bool update(float spd, float max_spd)
     {
+        /*
         float dy = dMPos.y;
         float dx = dMPos.x;
         // player can scoop down and left
@@ -276,6 +285,22 @@ class JamHistory
         {
             netDown += dx;
         }
-        return dy < 0;
+        return dy < 0;*/
+        netDown += Time.deltaTime * spd / max_spd / 0.3f;
+        return true;
+    }
+}
+
+public class Destroyable : MonoBehaviour
+{
+    private void Start()
+    {
+        // Debug.Log("destroyable attached");
+    }
+
+    private void OnBecameInvisible()
+    {
+        Debug.Log("destroyed");
+        Destroy(gameObject);
     }
 }

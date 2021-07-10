@@ -9,23 +9,10 @@ public class Bug : SpoonListener
     public float speed;
     public BugStrat strategy;
 
-	#region Creators
-    public Bug(Transform target)
-    {
-        this.target = target;
-        this.strategy = null;
-    }
-    public Bug(Transform target, BugStrat strategy)
-	{
-        this.target = target;
-        this.strategy = strategy;
-    }
-	#endregion
-
 	// Start is called before the first frame update
 	void Start()
     {
-        target = Player.Instance.transform;
+        this.target = Player.Instance.transform;
         if (strategy == null)
 		{
             this.strategy = new TakeJamBugStrat(home);
@@ -53,7 +40,13 @@ public class Bug : SpoonListener
 		{
             strategy.OnPlayerContact(this);
 		}
-        else if (other.GetComponent<Hive>() != null) // Is a hive.
+    }
+
+	private void OnCollisionStay2D(Collision2D collision)
+	{
+        GameObject other = collision.gameObject;
+
+        if (other.GetComponent<Hive>() != null) // Is a hive.
         {
             strategy.OnHiveContact(this);
         }
