@@ -677,9 +677,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 0
   state: 1
-  speedScalar: 0.01
+  speedScalar: 0.05
   velocity: {x: 0, y: 0, z: 0}
   heldJamColor: 0
+  rb: {fileID: 0}
+  currentInteractableObject: {fileID: 0}
 --- !u!61 &1319211808
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -870,7 +872,7 @@ PrefabInstance:
       objectReference: {fileID: 189187199}
     - target: {fileID: 8957029974577732763, guid: 7adeade3ee668a74a9caa3f838879d83, type: 3}
       propertyPath: transitionTime
-      value: 2
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7adeade3ee668a74a9caa3f838879d83, type: 3}
