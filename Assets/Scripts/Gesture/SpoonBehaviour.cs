@@ -105,8 +105,6 @@ public class SpoonBehaviour : MonoBehaviour
         _instance = this;
         dirLog = new List<Vector3>();
         dirLog.Add(Vector3.zero);
-
-        Cursor.visible = false;
     }
 
     int measureSeg = 1; // frames per measurement of mouse
@@ -195,7 +193,12 @@ public class SpoonBehaviour : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    private void OnBecameVisible()
+    {
+        Cursor.visible = false;
+    }
+
+    private void OnBecameInvisible()
     {
         Cursor.visible = true;
     }
@@ -236,6 +239,7 @@ public class SpoonBehaviour : MonoBehaviour
     {
         Debug.Log("oops, jam spilled...");
         GameObject newJam = Instantiate(jamAnchor);
+        newJam.AddComponent<Destroyable>();
 
         Rigidbody2D jamRig = newJam.AddComponent<Rigidbody2D>();
         jamRig.transform.position = transform.position;
@@ -277,5 +281,19 @@ class JamHistory
             netDown += dx;
         }
         return dy < 0;
+    }
+}
+
+public class Destroyable : MonoBehaviour
+{
+    private void Start()
+    {
+        // Debug.Log("destroyable attached");
+    }
+
+    private void OnBecameInvisible()
+    {
+        Debug.Log("destroyed");
+        Destroy(gameObject);
     }
 }
