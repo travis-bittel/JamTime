@@ -870,7 +870,7 @@ PrefabInstance:
       objectReference: {fileID: 189187199}
     - target: {fileID: 8957029974577732763, guid: 7adeade3ee668a74a9caa3f838879d83, type: 3}
       propertyPath: transitionTime
-      value: 0.2
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7adeade3ee668a74a9caa3f838879d83, type: 3}

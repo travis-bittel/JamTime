@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public void changeRooms(Room nextRoom)
+	public void changeRooms()
 	{
 		Debug.Log("Room Change Requested");
 		if (movingCamera)
@@ -82,10 +82,10 @@ public class GameManager : MonoBehaviour
 			Debug.Log("Finalizing last transition.");
 			roomChangeEnd(queuedRoom);
 		}
-		roomChangeStart(nextRoom);
+		roomChangeStart(queuedRoom);
 	}
 
-	private void roomChangeStart(Room nextRoom)
+	public void roomChangeStart(Room nextRoom)
 	{
 		movingCamera = true;
 		currentTransitionTime = 0.0f;
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	private void roomChangeEnd(Room nextRoom)
+	public void roomChangeEnd(Room nextRoom)
 	{
 		movingCamera = false;
 		Debug.Log("Room Transition Complete.");

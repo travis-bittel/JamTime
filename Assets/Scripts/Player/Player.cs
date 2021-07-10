@@ -112,7 +112,12 @@ public class Player : MonoBehaviour
 		GameObject other = collision.gameObject;
 		if (other.CompareTag("Room"))
 		{
-			gm.changeRooms(gm.queuedRoom);
+			Room nextRoom = other.GetComponent<Room>();
+			if (nextRoom == gm.queuedRoom)
+			{
+				gm.roomChangeEnd(nextRoom);
+			}
+			gm.changeRooms();
 		}
 	}
 
