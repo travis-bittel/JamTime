@@ -6,21 +6,37 @@ using UnityEngine;
 public class RoomObject : MonoBehaviour
 {
     public List<VisionMode> visibleVisionModes; // List of all vision modes that the object is visible within
-    private bool _isVisible;
+    protected bool _isVisible;
+
+    protected SpriteRenderer spriteRenderer;
+
+    protected Collider2D col;
+
     public bool IsVisible
     {
         get { return _isVisible; }
     }
 
-    public void UpdateVisibility()
+    public virtual void UpdateVisibility()
     {
-        if (visibleVisionModes.Contains(GameManager.Instance.CurrentVisionMode))
+        _isVisible = visibleVisionModes.Contains(GameManager.Instance.CurrentVisionMode);
+
+        if (spriteRenderer == null)
         {
-            _isVisible = true;
-        } else
-        {
-            _isVisible = false;
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
-        GetComponent<SpriteRenderer>().enabled = _isVisible;
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = _isVisible;
+        }
+
+        if (col == null)
+        {
+            col = GetComponent<Collider2D>();
+        }
+        if (col != null)
+        {
+            col.enabled = _isVisible;
+        }
     }
 }
