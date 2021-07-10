@@ -766,6 +766,10 @@ PrefabInstance:
       propertyPath: currentRoom
       value: 
       objectReference: {fileID: 189187199}
+    - target: {fileID: 4890778812917452907, guid: 6e41245515fa2fc4ebc93e15d8158479, type: 3}
+      propertyPath: transitionTime
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4890778812917452916, guid: 6e41245515fa2fc4ebc93e15d8158479, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -923,10 +927,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3159437088296311093, guid: e4bc4c87a3cbfcb4aad13c2b57cd50a4, type: 3}
-      propertyPath: orthographic size
-      value: 4.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3159437088296311095, guid: e4bc4c87a3cbfcb4aad13c2b57cd50a4, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -1015,7 +1015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6046483098671319160, guid: a1bb374bbcae94f42bf0c82a9a326955, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6046483098671319160, guid: a1bb374bbcae94f42bf0c82a9a326955, type: 3}
       propertyPath: m_LocalRotation.w

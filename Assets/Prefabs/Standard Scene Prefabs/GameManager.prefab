@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRoom: {fileID: 0}
   queuedRoom: {fileID: 0}
-  transitionTime: 2
+  transitionTime: 0.2
 --- !u!114 &4890778812917452905
 MonoBehaviour:
   m_ObjectHideFlags: 0
