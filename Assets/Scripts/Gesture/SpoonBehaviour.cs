@@ -31,10 +31,15 @@ public class SpoonBehaviour : MonoBehaviour
         set
         {
             _jam = Mathf.Min(1, value);
+            if (value >= 1)
+            {
+                // clears jar when scooping a lot
+                Player.Instance.heldJamColor = VisionMode.DEFAULT;
+            }
             if (jamRend != null)
             {
                 jamRend.enabled = _jam > 0;
-                jamRend.transform.position = Vector3.zero;
+                jamRend.transform.localPosition = Vector3.zero;
                 jamRend.transform.localScale = Vector3.one * _jam * 0.23f;
             }
             if (_jam == 0) {

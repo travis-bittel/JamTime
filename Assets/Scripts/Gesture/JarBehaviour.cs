@@ -8,7 +8,7 @@ public class JarBehaviour : MonoBehaviour
     CapsuleCollider2D capsule;
     SpriteRenderer rend;
 
-    public Sprite purple, red, yellow;
+    public Sprite purple, red, yellow, empty;
 
     static JarBehaviour _instance;
     public static JarBehaviour instance
@@ -31,7 +31,8 @@ public class JarBehaviour : MonoBehaviour
         // rend = GetComponent<SpriteRenderer>();
 
         // force set to default
-        pickUp(VisionMode.DEFAULT);
+        // pickUp(VisionMode.DEFAULT);
+        rend.color = Color.clear;
     }
 
     // Update is called once per frame
@@ -65,7 +66,6 @@ public class JarBehaviour : MonoBehaviour
         System.Tuple<Color, Color> jCols = jamToCol(vm);
         jColL = jCols.Item1;
         jColD = jCols.Item2;
-
         rend.color = Color.white;
         switch (vm)
         {
@@ -79,7 +79,7 @@ public class JarBehaviour : MonoBehaviour
                 rend.sprite = yellow;
                 break;
             case VisionMode.DEFAULT:
-                rend.color = Color.clear;
+                rend.sprite = empty;
                 break;
         }
     }
