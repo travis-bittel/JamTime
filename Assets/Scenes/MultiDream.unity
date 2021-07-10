@@ -150,11 +150,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 68685100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 891ec316f94406b48b06dc0450574c78, type: 3}
+  m_Script: {fileID: 11500000, guid: 60a54e25689020048929d609fc8e3526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   width: 16
   height: 9
+  roomObjects: []
 --- !u!61 &68685102
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -262,11 +263,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 189187196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 891ec316f94406b48b06dc0450574c78, type: 3}
+  m_Script: {fileID: 11500000, guid: 60a54e25689020048929d609fc8e3526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   width: 16
   height: 9
+  roomObjects: []
 --- !u!1 &615812268
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,8 +593,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 0
   state: 1
-  SpeedScalar: 0.04
-  speed: {x: 0, y: 0, z: 0}
+  speedScalar: 0.05
+  velocity: {x: 0, y: 0, z: 0}
+  heldJamColor: 0
 --- !u!1 &1329922055
 GameObject:
   m_ObjectHideFlags: 0

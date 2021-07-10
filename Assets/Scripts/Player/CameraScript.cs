@@ -5,10 +5,6 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
     public Room startingRoom;
-    /*
-     * Helps with aspect ratio calculations.
-     * Not sure why this is this number.
-     */
     private float dividerConst = 2.0f; 
 
     private Vector3 pointNow;
