@@ -9,6 +9,20 @@ public class Room : MonoBehaviour
     public float height = 9.0f;
     public List<RoomObject> roomObjects;
 
+    private void Start()
+    {
+        // Get all children and add them to the roomObjects list
+        foreach (Transform child in transform)
+        {
+            RoomObject obj = child.GetComponent<RoomObject>();
+            if (obj != null)
+            {
+                roomObjects.Add(obj);
+            }
+        }
+        UpdateRoomObjectVisibility();
+    }
+
     public void UpdateRoomObjectVisibility()
     {
         if (roomObjects != null)

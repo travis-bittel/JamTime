@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ public enum VisionMode
 	PURPLE
 }
 
-public class Player : MonoBehaviour
+public class Player : SpoonListener
 {
 	#region Singleton Code
 	private static Player _instance;
@@ -61,7 +62,19 @@ public class Player : MonoBehaviour
 	public PlayerState state = PlayerState.IDLE;
 	public float speedScalar;
 	public Vector3 velocity;
-	public VisionMode heldJamColor; // The color of the jam the player is currently carrying
+	private VisionMode _heldJamColor; // The color of the jam the player is currently carrying
+	public VisionMode heldJamColor
+    {
+		get
+        {
+			return _heldJamColor;
+        }
+		set
+        {
+			_heldJamColor = value;
+			JarBehaviour.instance.pickUp(value);
+        }
+    }
 
 	[SerializeField]
 	private Rigidbody2D rb;
@@ -89,7 +102,10 @@ public class Player : MonoBehaviour
 			rb = GetComponent<Rigidbody2D>();
 		}
 
-		TextManager.Instance.DisplayFixedText(Color.white, "Use Enter to dismiss text.", "Use WASD to move.");
+		if (TextManager.Instance != null)
+        {
+			TextManager.Instance.DisplayFixedText(Color.white, "Use Enter to dismiss text.", "Use WASD to move.");
+		}
 	}
 
 	// Update is called once per frame
@@ -149,6 +165,19 @@ public class Player : MonoBehaviour
 		}
 	}
 
+	public void OnToggleVisionModeOn()
+    {
+		GameManager.Instance.CurrentVisionMode = heldJamColor;
+		StartCoroutine(OnToggleVisionModeOff());
+	}
+
+	IEnumerator OnToggleVisionModeOff()
+    {
+		Debug.Log("jam vision effect will last for " + (SpoonBehaviour.Instance.jam * 5) + " seconds");
+		yield return new WaitForSeconds(SpoonBehaviour.Instance.jam * 5);
+		GameManager.Instance.CurrentVisionMode = VisionMode.DEFAULT;
+	}
+
 	public void OnToggleVisionMode()
     {
 		if (GameManager.Instance.CurrentVisionMode != heldJamColor)
@@ -179,6 +208,12 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+		// for spoon collision
+		if (HandleSpoonCollision(collision)) {
+			return;
+        }
+		////
+
 		InteractableObject obj = collision.gameObject.GetComponent<InteractableObject>();
 		if (obj != null)
         {
@@ -189,16 +224,8 @@ public class Player : MonoBehaviour
 				if (obj is JamJar)
                 {
 					heldJamColor = ((JamJar)obj).type;
-					JarBehaviour.instance.pickUp(((JamJar)obj).type);
                 }
 			}
-		}
-
-		SpoonBehaviour s = collision.gameObject.GetComponent<SpoonBehaviour>();
-		if (s)
-		{
-			s.eat();
-			OnToggleVisionMode();
 		}
 	}
 	private void OnTriggerExit2D(Collider2D collision)

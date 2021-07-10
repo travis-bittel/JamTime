@@ -14,6 +14,7 @@ public class CameraScript : MonoBehaviour
         aspectRatio = (float)Screen.width / (float)Screen.height;
         resizeCamera(startingRoom);
         transform.position = startingRoom.transform.position;
+        transform.position = new Vector3(startingRoom.transform.position.x, startingRoom.transform.position.y, -1); // -1 to allow the camera to see the room
     }
 
     // Update is called once per frame
