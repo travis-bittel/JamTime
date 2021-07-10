@@ -183,6 +183,11 @@ public class Player : MonoBehaviour
                 }
 			}
 		}
+
+		if (collision.GetComponent<SpoonBehaviour>() != null)
+        {
+			OnToggleVisionMode();
+        }
 	}
 
 	private void OnTriggerExit2D(Collider2D collision)
