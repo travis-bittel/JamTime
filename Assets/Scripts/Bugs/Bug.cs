@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bug : MonoBehaviour
+public class Bug : SpoonListener
 {
     public Transform target;
     public Transform home;
