@@ -61,7 +61,6 @@ public class Player : MonoBehaviour
 	public PlayerState state = PlayerState.IDLE;
 	public float speedScalar;
 	public Vector3 velocity;
-
 	public VisionMode heldJamColor; // The color of the jam the player is currently carrying
 
 	// Start is called before the first frame update
@@ -95,6 +94,28 @@ public class Player : MonoBehaviour
     {
 
     }
+
+	public void OnCollisionEnter2D(Collision2D collision)
+	{
+		// If colliding with another room.
+		GameObject other = collision.gameObject;
+		if (other.CompareTag("Room"))
+		{
+			GameManager.Instance.queuedRoom = other.GetComponent<Room>();
+		}
+	}
+
+	public void OnCollisionExit2D(Collision2D collision)
+	{
+		GameManager gm = GameManager.Instance;
+		// If colliding with another room...
+		GameObject other = collision.gameObject;
+		if (other.CompareTag("Room"))
+		{
+			gm.changeRooms(gm.queuedRoom);
+		}
+	}
+
 	public void OnToggleVisionMode()
     {
 		if (GameManager.Instance.CurrentVisionMode != heldJamColor)
