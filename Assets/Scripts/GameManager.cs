@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 	}
 	#endregion
 
+	[SerializeField]
 	private VisionMode _currentVisionMode;
 
 	public Room currentRoom;
@@ -121,5 +122,7 @@ public class GameManager : MonoBehaviour
 		cs.resizeCamera(nextRoom);
 		cs.moveToPosition(nextRoom.transform.position);
 		currentRoom = nextRoom;
+
+		currentRoom.UpdateRoomObjectVisibility();
 	}
 }
