@@ -73,3 +73,9 @@ crashlytics-build.properties
 
 # Modifications for our VGDev Game Jam
 */[Ll]ogs/*
+
+# FMOD
+/Assets/FMODStudioCache.asset
+/Assets/FMODStudioCache.asset.meta
+fmod.log
+fmod_editor.log
