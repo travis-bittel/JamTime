@@ -7,7 +7,7 @@ public class SpoonBehaviour : MonoBehaviour
 {
     public Vector3 mPos; // position of the mouse under world coordinate
 
-    const int NUM_DIR = 50;
+    const int NUM_DIR = 40;
     List<Vector3> dirLog; // log of the last NUM_DIR mouse deltas
 
     public float avg_spd = 0.0f;
@@ -17,22 +17,29 @@ public class SpoonBehaviour : MonoBehaviour
 
     float zInit = 10;
 
+    public float jam_spillage = 5;
     float _jam;
     // the current amount of jam in the spoon
-    float jam
+    public float jam
     {
         set
         {
-            _jam = value;
+            _jam = Mathf.Min(1.5f, value);
             if (jamRend != null)
             {
-                jamRend.enabled = value > 0;
-            } 
+                jamRend.enabled = _jam > 0;
+                jamRend.transform.localScale = Vector3.one * _jam;
+            }
+            if (_jam == 0) {
+                jh = null;
+            }
         }
         get { return _jam; }
     }
 
     SpriteRenderer jamRend;
+    GameObject jamAnchor;
+    CapsuleCollider2D spoonBounds;
 
     /*
     // singleton setup for spoon object
@@ -59,12 +66,16 @@ public class SpoonBehaviour : MonoBehaviour
 
         rend = GetComponent<SpriteRenderer>();
 
-        jamRend = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        jamAnchor = transform.GetChild(0).gameObject;
+        jamRend = jamAnchor.transform.GetChild(0).GetComponent<SpriteRenderer>();
         jam = 0;
+
+        spoonBounds = GetComponent<CapsuleCollider2D>();
     }
 
-    int measureSeg = 10; // frames per measurement of mouse
+    int measureSeg = 1; // frames per measurement of mouse
     // Update is called once per frame
+    JamHistory jh = null;
     void Update()
     {
         // calculate mouse position per frame
@@ -76,6 +87,7 @@ public class SpoonBehaviour : MonoBehaviour
                 zInit
                 )
             );
+        Vector3 dm = mPos - mPosT;
 
         // spoon follow mouse
         transform.position = mPos;
@@ -83,7 +95,7 @@ public class SpoonBehaviour : MonoBehaviour
         // update cumulative mouse stats
         if (Time.frameCount % measureSeg == 0)
         {
-            dirLog.Add((mPos - mPosT) / Time.deltaTime);
+            dirLog.Add(dm / Time.deltaTime);
             if (dirLog.Count > NUM_DIR)
             {
                 dirLog.RemoveAt(0);
@@ -109,37 +121,86 @@ public class SpoonBehaviour : MonoBehaviour
 
         if (inJar)
         {
-            jam = 1;
-        }
-        else if (eat())
-        {
-            jam = 0;
-        }
-        // spill jam
+            getJamInJar(dm);
+        }// spill jam
         else if (jam > 0)
         {
-            if (avg_spd > 5)
+            if (avg_spd > jam_spillage)
             {
-                spillJam();
+                spillJam(mPos - mPosT);
             }
+            jamRend.gameObject.transform.localPosition = new Vector3(
+                   Mathf.Sin(Time.time *12) * Mathf.Max(Mathf.Abs(avg_spd / jam_spillage), 1) * Mathf.Abs(avg_dir.x),
+                   Mathf.Abs(Mathf.Sin(Time.time * 10f) * Mathf.Max(Mathf.Abs(avg_spd / jam_spillage), 1) * Mathf.Abs(avg_dir.y)),
+                   0.0f
+                   ) * 0.005f * jam;
         }
     }
 
     // detect eating gesture
-    bool eat()
+    void eat()
     {
-        return true;
+        jam = 0;
+    }
+
+    public void getJamInJar(Vector3 dMPos)
+    {
+        if (jh != null) {
+            jh.update(dMPos);
+            jam = jh.netDown * -1;
+        }
+        else
+        {
+            jh = new JamHistory();
+        }
+    }
+
+    public void onEnterJam()
+    {
+        jam = 0.00001f;
+        jh = new JamHistory();
     }
 
     // clone current jam object and toss it out along mouse trail
-    void spillJam()
+    void spillJam(Vector3 dMPos)
     {
         Debug.Log("oops, jam spilled...");
         GameObject newJam = Instantiate(jamRend.gameObject);
 
         Rigidbody2D jamRig = newJam.AddComponent <Rigidbody2D>();
-        jamRig.gravityScale = 0.5f;
+        jamRig.gravityScale = 2f;
         jamRig.position = jamRend.gameObject.transform.position;
-        jamRig.velocity = avg_dir * avg_spd;
+        jamRig.velocity = new Vector3(
+            dMPos.x,
+            dMPos.y,
+            dMPos.z
+            );
+        jamRig.drag = 0.2f;
+
+        // preserve size of the new jam object
+        newJam.transform.localScale = Vector3.one * transform.localScale.x * jamRend.transform.localScale.x;
+
+        jam = 0;
+    }
+}
+
+class JamHistory
+{
+    public float netDown = 0.2f;
+
+    // return if currently in downstroke
+    public bool update(Vector3 dMPos)
+    {
+        float dy = dMPos.y;
+        float dx = dMPos.x;
+        // player can scoop down and left
+        if (dy < -0.1f) {
+            netDown += dy;
+        }
+        if (dx < -0.1f)
+        {
+            netDown += dx;
+        }
+        return dy < 0;
     }
 }

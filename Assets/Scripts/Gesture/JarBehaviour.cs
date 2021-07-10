@@ -16,17 +16,20 @@ public class JarBehaviour : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        SpoonBehaviour s = collision.GetComponent<SpoonBehaviour>();
-        if (s) {
+        Debug.Log("collision icon");
+        SpoonBehaviour s = collision.gameObject.GetComponent<SpoonBehaviour>();
+        if (s)
+        {
             s.inJar = true;
+            s.onEnterJam();
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        SpoonBehaviour s = collision.GetComponent<SpoonBehaviour>();
+        SpoonBehaviour s = collision.gameObject.GetComponent<SpoonBehaviour>();
         if (s)
         {
             s.inJar = false;
