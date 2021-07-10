@@ -165,11 +165,11 @@ public class SpoonBehaviour : MonoBehaviour
     void spillJam(Vector3 dMPos)
     {
         Debug.Log("oops, jam spilled...");
-        GameObject newJam = Instantiate(jamRend.gameObject);
+        GameObject newJam = Instantiate(jamAnchor);
 
-        Rigidbody2D jamRig = newJam.AddComponent <Rigidbody2D>();
+        Rigidbody2D jamRig = newJam.AddComponent<Rigidbody2D>();
         jamRig.gravityScale = 2f;
-        jamRig.position = jamRend.gameObject.transform.position;
+        jamRig.position = transform.position;
         jamRig.velocity = new Vector3(
             dMPos.x,
             dMPos.y,
@@ -178,7 +178,8 @@ public class SpoonBehaviour : MonoBehaviour
         jamRig.drag = 0.2f;
 
         // preserve size of the new jam object
-        newJam.transform.localScale = Vector3.one * transform.localScale.x * jamRend.transform.localScale.x;
+        newJam.transform.localScale = Vector3.one * transform.localScale.x * jamAnchor.transform.localScale.x;
+        newJam.transform.GetChild(0).transform.localPosition = Vector3.zero;
 
         jam = 0;
     }
