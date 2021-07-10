@@ -28,7 +28,7 @@ public enum VisionMode
 	DEFAULT,
 	RED,
 	YELLOW,
-	BLUE
+	PURPLE
 }
 
 public class Player : MonoBehaviour
