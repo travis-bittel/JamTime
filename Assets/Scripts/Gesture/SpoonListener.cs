@@ -39,6 +39,8 @@ abstract public class SpoonListener : MonoBehaviour
             if (s.jam > jamAmount) {
                 Debug.Log("\tjam ate...");
                 onEatJam.Invoke();
+                Player.Instance.heldJamColor = VisionMode.DEFAULT;
+
                 s.jam = 0;
                 s.anim.SetBool("scooping", true);
                 s.StartCoroutine(s.ScoopGestureFinish(1.5f));

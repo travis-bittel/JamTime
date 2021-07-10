@@ -3272,10 +3272,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4615109099841237713, guid: eb99ae2059d03ca429f63982570dff1b, type: 3}
-      propertyPath: jam_spillage
-      value: 50
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb99ae2059d03ca429f63982570dff1b, type: 3}
 --- !u!114 &829003299 stripped
@@ -3479,7 +3475,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4270716570797007889, guid: 56eed249917930e429da6510646a9244, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14
+      value: 0.334
       objectReference: {fileID: 0}
     - target: {fileID: 4270716570797007889, guid: 56eed249917930e429da6510646a9244, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4478,14 +4474,6 @@ PrefabInstance:
     - target: {fileID: 8416119683728361208, guid: 1300061d05368f641b87518c91590daf, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416119683728361212, guid: 1300061d05368f641b87518c91590daf, type: 3}
-      propertyPath: failure_sfx
-      value: event:/SFX/player_clank
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416119683728361212, guid: 1300061d05368f641b87518c91590daf, type: 3}
-      propertyPath: success_sfx
-      value: event:/SFX/player_slurp
       objectReference: {fileID: 0}
     - target: {fileID: 8416119683728361213, guid: 1300061d05368f641b87518c91590daf, type: 3}
       propertyPath: m_RootOrder
