@@ -133,8 +133,8 @@ MonoBehaviour:
   avg_spd: 0
   avg_dir: {x: 0, y: 0, z: 0}
   rend: {fileID: 0}
-  jam_spillage: 40
-  inJar: 0
+  jam_spillage: 115
+  _jam: 0
 --- !u!212 &4615109099841237714
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -198,9 +198,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.3
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 2

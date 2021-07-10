@@ -17,8 +17,8 @@ public class SpoonBehaviour : MonoBehaviour
 
     float zInit = 10;
 
-    public float jam_spillage = 5;
-    float _jam = 0;
+    public float jam_spillage;
+    public float _jam = 0;
     // the current amount of jam in the spoon
     public float jam
     {
@@ -38,7 +38,9 @@ public class SpoonBehaviour : MonoBehaviour
     }
 
     SpriteRenderer jamRend;
+    Rigidbody2D rig;
     GameObject jamAnchor;
+    Color jColL, jColD;
     // CapsuleCollider2D spoonBounds;
 
     /*
@@ -56,7 +58,25 @@ public class SpoonBehaviour : MonoBehaviour
      */
 
     // whether the spoon is currently in a jar
-    public bool inJar = false;
+    bool _inJar = false;
+    public bool inJar
+    {
+        get
+        {
+            return _inJar;
+        }
+        set
+        {
+            _inJar = value;
+            if (value) {
+                onEnterJam();
+            }
+            else
+            {
+                onExitJam();
+            }
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -68,14 +88,16 @@ public class SpoonBehaviour : MonoBehaviour
 
         jamAnchor = transform.GetChild(0).gameObject;
         jamRend = jamAnchor.transform.GetChild(0).GetComponent<SpriteRenderer>();
-        jam = 0;
-
         // spoonBounds = GetComponent<CapsuleCollider2D>();
+
+        rig = GetComponent<Rigidbody2D>();
     }
 
     int measureSeg = 1; // frames per measurement of mouse
     // Update is called once per frame
     JamHistory jh = null;
+
+    int jColUpdateSeg = 3;
     void Update()
     {
         // calculate mouse position per frame
@@ -121,7 +143,7 @@ public class SpoonBehaviour : MonoBehaviour
 
         if (inJar)
         {
-            getJamInJar(dm / Time.deltaTime);
+            getJamInJar(dm);
         }// spill jam
         else if (jam > 0)
         {
@@ -135,10 +157,28 @@ public class SpoonBehaviour : MonoBehaviour
                    0.0f
                    ) * 0.03f * jam;
         }
+
+        //randomly update jam color inside spoon for "glittering" effect
+        if (jamRend.enabled)
+        {
+            if (Time.frameCount % jColUpdateSeg == 0)
+            {
+                if (Random.value < (0.005f * avg_spd))
+                {
+                    // glitter
+                    jamRend.color = jColL;
+                }
+                else
+                {
+                    jamRend.color = jColD;
+                }
+            }
+            
+        }
     }
 
     // detect eating gesture
-    void eat()
+    public void eat()
     {
         jam = 0;
     }
@@ -147,7 +187,7 @@ public class SpoonBehaviour : MonoBehaviour
     {
         if (jh != null) {
             jh.update(dMPos);
-            jam = jh.netDown * -0.025f;
+            jam = jh.netDown * -0.33f;
         }
         else
         {
@@ -159,6 +199,16 @@ public class SpoonBehaviour : MonoBehaviour
     {
         jam = 0.00001f;
         jh = new JamHistory();
+        jh.jType = Player.Instance.heldJamColor;
+        rend.color = new Color(1f, 1f, 1f, 0.3f);
+
+        jColL = JarBehaviour.instance.jColL;
+        jColD = JarBehaviour.instance.jColD;
+    }
+
+    public void onExitJam()
+    {
+        rend.color = Color.white;
     }
 
     // clone current jam object and toss it out along mouse trail
@@ -185,6 +235,7 @@ public class SpoonBehaviour : MonoBehaviour
 class JamHistory
 {
     public float netDown = 0.2f;
+    public VisionMode jType = VisionMode.DEFAULT;
 
     // return if currently in downstroke
     public bool update(Vector3 dMPos)
