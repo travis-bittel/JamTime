@@ -15,6 +15,7 @@ public class TakeJamBugStrat : BugStrat
 
 	public void OnPlayerContact(Bug self) {
 		Player.Instance.heldJamColor = VisionMode.DEFAULT;
+		GameManager.Instance.CurrentVisionMode = VisionMode.DEFAULT;
 		self.target = this.home;
 	}
 
