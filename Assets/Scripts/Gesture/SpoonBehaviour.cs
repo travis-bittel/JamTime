@@ -17,6 +17,12 @@ public class SpoonBehaviour : MonoBehaviour
 
     float zInit = 10;
 
+    private static SpoonBehaviour _instance;
+    public static SpoonBehaviour Instance
+    {
+        get { return _instance; }
+    }
+
     public float jam_spillage;
     public float _jam = 0;
     // the current amount of jam in the spoon
@@ -36,6 +42,8 @@ public class SpoonBehaviour : MonoBehaviour
         }
         get { return _jam; }
     }
+
+    public Animator anim;
 
     SpriteRenderer jamRend;
     Rigidbody2D rig;
@@ -78,19 +86,27 @@ public class SpoonBehaviour : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    // connect to other game components
+    private void Awake()
     {
-        dirLog = new List<Vector3>();
-        dirLog.Add(Vector3.zero);
-
         rend = GetComponent<SpriteRenderer>();
 
         jamAnchor = transform.GetChild(0).gameObject;
         jamRend = jamAnchor.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         // spoonBounds = GetComponent<CapsuleCollider2D>();
 
         rig = GetComponent<Rigidbody2D>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        _instance = this;
+        dirLog = new List<Vector3>();
+        dirLog.Add(Vector3.zero);
+
+        Cursor.visible = false;
     }
 
     int measureSeg = 1; // frames per measurement of mouse
@@ -104,8 +120,8 @@ public class SpoonBehaviour : MonoBehaviour
         Vector3 mPosT = mPos;
         mPos = Camera.main.ScreenToWorldPoint(
             new Vector3(
-                Mouse.current.position.x.ReadValue(),
-                Mouse.current.position.y.ReadValue(),
+                Pointer.current.position.x.ReadValue(),
+                Pointer.current.position.y.ReadValue(),
                 zInit
                 )
             );
@@ -151,11 +167,13 @@ public class SpoonBehaviour : MonoBehaviour
             {
                 spillJam(dm / Time.deltaTime);
             }
+            /*
             jamRend.gameObject.transform.localPosition = new Vector3(
                    Mathf.Sin(Time.time *12) * Mathf.Max(Mathf.Abs(avg_spd / jam_spillage), 1) * Mathf.Abs(avg_dir.x),
                    Mathf.Abs(Mathf.Sin(Time.time * 10f) * Mathf.Max(Mathf.Abs(avg_spd / jam_spillage), 1) * Mathf.Abs(avg_dir.y)),
                    0.0f
                    ) * 0.03f * jam;
+            */
         }
 
         //randomly update jam color inside spoon for "glittering" effect
@@ -177,10 +195,9 @@ public class SpoonBehaviour : MonoBehaviour
         }
     }
 
-    // detect eating gesture
-    public void eat()
+    private void OnDestroy()
     {
-        jam = 0;
+        Cursor.visible = true;
     }
 
     public void getJamInJar(Vector3 dMPos)
@@ -204,10 +221,13 @@ public class SpoonBehaviour : MonoBehaviour
 
         jColL = JarBehaviour.instance.jColL;
         jColD = JarBehaviour.instance.jColD;
+
+        anim.SetBool("scooping", true);
     }
 
     public void onExitJam()
     {
+        anim.SetBool("scooping", false);
         rend.color = Color.white;
     }
 
@@ -229,6 +249,12 @@ public class SpoonBehaviour : MonoBehaviour
         newJam.transform.GetChild(0).transform.localPosition = Vector3.zero;
 
         jam = 0;
+    }
+
+    public IEnumerator ScoopGestureFinish(float t)
+    {
+        yield return new WaitForSeconds(t);
+        anim.SetBool("scooping", false);
     }
 }
 
