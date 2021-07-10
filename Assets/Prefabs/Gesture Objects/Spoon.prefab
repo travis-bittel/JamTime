@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 4615109099841237714}
   - component: {fileID: 4615109099841237716}
   - component: {fileID: 4615109099841237715}
+  - component: {fileID: 3468909907161436278}
   m_Layer: 0
   m_Name: Spoon
   m_TagString: Untagged
@@ -135,6 +136,7 @@ MonoBehaviour:
   rend: {fileID: 0}
   jam_spillage: 35
   _jam: 0
+  anim: {fileID: 0}
 --- !u!212 &4615109099841237714
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -217,12 +219,31 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0019859076, y: 0.0237602}
   m_Size: {x: 0.273165, y: 0.273165}
   m_Direction: 0
+--- !u!95 &3468909907161436278
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4615109099841237711}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c76546046c98f7a46be1ec183b8ea624, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4615109099861870899
 GameObject:
   m_ObjectHideFlags: 0

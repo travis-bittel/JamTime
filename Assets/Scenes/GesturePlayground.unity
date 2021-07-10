@@ -2029,10 +2029,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4270716570797007888, guid: 56eed249917930e429da6510646a9244, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4270716570797007889, guid: 56eed249917930e429da6510646a9244, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2080,14 +2076,6 @@ PrefabInstance:
     - target: {fileID: 4270716570797007890, guid: 56eed249917930e429da6510646a9244, type: 3}
       propertyPath: m_Name
       value: Jar
-      objectReference: {fileID: 0}
-    - target: {fileID: 4270716570797007902, guid: 56eed249917930e429da6510646a9244, type: 3}
-      propertyPath: m_UseFullKinematicContacts
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4270716570797007903, guid: 56eed249917930e429da6510646a9244, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56eed249917930e429da6510646a9244, type: 3}
@@ -2153,10 +2141,6 @@ PrefabInstance:
     - target: {fileID: 4615109099841237712, guid: eb99ae2059d03ca429f63982570dff1b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615109099841237715, guid: eb99ae2059d03ca429f63982570dff1b, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4615109099861870899, guid: eb99ae2059d03ca429f63982570dff1b, type: 3}
       propertyPath: m_IsActive

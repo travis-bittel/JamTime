@@ -36,6 +36,8 @@ abstract public class SpoonListener : MonoBehaviour
                 Debug.Log("\tjam ate...");
                 onEatJam.Invoke();
                 s.jam = 0;
+                s.anim.SetBool("scooping", true);
+                s.StartCoroutine(s.ScoopGestureFinish(1.5f));
                 return true;
             }
             else

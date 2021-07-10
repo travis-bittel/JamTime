@@ -43,6 +43,8 @@ public class SpoonBehaviour : MonoBehaviour
         get { return _jam; }
     }
 
+    public Animator anim;
+
     SpriteRenderer jamRend;
     Rigidbody2D rig;
     GameObject jamAnchor;
@@ -84,20 +86,25 @@ public class SpoonBehaviour : MonoBehaviour
         }
     }
 
+    // connect to other game components
+    private void Awake()
+    {
+        rend = GetComponent<SpriteRenderer>();
+
+        jamAnchor = transform.GetChild(0).gameObject;
+        jamRend = jamAnchor.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+        // spoonBounds = GetComponent<CapsuleCollider2D>();
+
+        rig = GetComponent<Rigidbody2D>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         _instance = this;
         dirLog = new List<Vector3>();
         dirLog.Add(Vector3.zero);
-
-        rend = GetComponent<SpriteRenderer>();
-
-        jamAnchor = transform.GetChild(0).gameObject;
-        jamRend = jamAnchor.transform.GetChild(0).GetComponent<SpriteRenderer>();
-        // spoonBounds = GetComponent<CapsuleCollider2D>();
-
-        rig = GetComponent<Rigidbody2D>();
     }
 
     int measureSeg = 1; // frames per measurement of mouse
@@ -207,10 +214,13 @@ public class SpoonBehaviour : MonoBehaviour
 
         jColL = JarBehaviour.instance.jColL;
         jColD = JarBehaviour.instance.jColD;
+
+        anim.SetBool("scooping", true);
     }
 
     public void onExitJam()
     {
+        anim.SetBool("scooping", false);
         rend.color = Color.white;
     }
 
@@ -232,6 +242,12 @@ public class SpoonBehaviour : MonoBehaviour
         newJam.transform.GetChild(0).transform.localPosition = Vector3.zero;
 
         jam = 0;
+    }
+
+    public IEnumerator ScoopGestureFinish(float t)
+    {
+        yield return new WaitForSeconds(t);
+        anim.SetBool("scooping", false);
     }
 }
 
