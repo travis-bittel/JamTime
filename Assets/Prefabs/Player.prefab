@@ -314,7 +314,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  jamAmount: 0.6
+  jamAmount: 0.0001
   direction: 0
   state: 1
   speedScalar: 0.1

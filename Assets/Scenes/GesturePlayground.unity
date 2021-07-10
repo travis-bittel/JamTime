@@ -2085,6 +2085,10 @@ PrefabInstance:
       propertyPath: m_UseFullKinematicContacts
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4270716570797007903, guid: 56eed249917930e429da6510646a9244, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56eed249917930e429da6510646a9244, type: 3}
 --- !u!1001 &4615109100304103520
