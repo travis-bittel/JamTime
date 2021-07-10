@@ -17,15 +17,9 @@ public class RoomObject : MonoBehaviour
         get { return _isVisible; }
     }
 
-    public void UpdateVisibility()
+    public virtual void UpdateVisibility()
     {
-        if (visibleVisionModes.Contains(GameManager.Instance.CurrentVisionMode))
-        {
-            _isVisible = true;
-        } else
-        {
-            _isVisible = false;
-        }
+        _isVisible = visibleVisionModes.Contains(GameManager.Instance.CurrentVisionMode);
 
         if (spriteRenderer == null)
         {

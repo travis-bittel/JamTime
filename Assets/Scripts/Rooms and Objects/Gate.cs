@@ -27,4 +27,27 @@ public class Gate : RoomObject
             col.enabled = !isOpen;
         }
     }
+
+    public override void UpdateVisibility()
+    {
+        _isVisible = !isOpen && visibleVisionModes.Contains(GameManager.Instance.CurrentVisionMode);
+
+        if (spriteRenderer == null)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = _isVisible;
+        }
+
+        if (col == null)
+        {
+            col = GetComponent<Collider2D>();
+        }
+        if (col != null)
+        {
+            col.enabled = _isVisible;
+        }
+    }
 }
