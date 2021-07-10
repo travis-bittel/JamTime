@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
 		TextManager.Instance.NextSentence();
     }
 
-	public void OnCollisionEnter2D(Collision2D collision)
+/*	public void OnCollisionEnter2D(Collision2D collision)
 	{
 		// If colliding with another room.
 		GameObject other = collision.gameObject;
@@ -134,9 +134,9 @@ public class Player : MonoBehaviour
 		{
 			GameManager.Instance.queuedRoom = other.GetComponent<Room>();
 		}
-	}
+	}*/
 
-	public void OnCollisionExit2D(Collision2D collision)
+/*	public void OnCollisionExit2D(Collision2D collision)
 	{
 		GameManager gm = GameManager.Instance;
 		// If colliding with another room...
@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
 			}
 			gm.changeRooms();
 		}
-	}
+	}*/
 
 	public void OnToggleVisionMode()
     {
@@ -203,6 +203,13 @@ public class Player : MonoBehaviour
 			s.eat();
 			OnToggleVisionMode();
 		}
+
+		// If colliding with another room.
+		GameObject other = collision.gameObject;
+		if (other.CompareTag("Room"))
+		{
+			GameManager.Instance.queuedRoom = other.GetComponent<Room>();
+		}
 	}
 	private void OnTriggerExit2D(Collider2D collision)
 	{
@@ -210,6 +217,19 @@ public class Player : MonoBehaviour
 		if (currentInteractableObject == obj)
 		{
 			currentInteractableObject = null;
+		}
+
+		GameManager gm = GameManager.Instance;
+		// If colliding with another room...
+		GameObject other = collision.gameObject;
+		if (other.CompareTag("Room"))
+		{
+			Room nextRoom = other.GetComponent<Room>();
+			if (nextRoom == gm.queuedRoom)
+			{
+				gm.roomChangeEnd(nextRoom);
+			}
+			gm.changeRooms();
 		}
 	}
 }
