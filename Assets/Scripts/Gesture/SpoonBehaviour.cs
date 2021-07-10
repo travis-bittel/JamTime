@@ -133,7 +133,7 @@ public class SpoonBehaviour : MonoBehaviour
                    Mathf.Sin(Time.time *12) * Mathf.Max(Mathf.Abs(avg_spd / jam_spillage), 1) * Mathf.Abs(avg_dir.x),
                    Mathf.Abs(Mathf.Sin(Time.time * 10f) * Mathf.Max(Mathf.Abs(avg_spd / jam_spillage), 1) * Mathf.Abs(avg_dir.y)),
                    0.0f
-                   ) * 0.005f * jam;
+                   ) * 0.03f * jam;
         }
     }
 
