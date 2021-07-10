@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hive : MonoBehaviour
 {
     public PlayerTrigger playerTrigger;
+    public GameObject bugPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,8 @@ public class Hive : MonoBehaviour
 	}
 
     private void spawnBug(){
-        Debug.Log("Would've spawned a buggy if I could...");
+        Bug bug = Instantiate(bugPrefab).GetComponent<Bug>();
+        bug.transform.position = transform.position;
+        bug.home = transform;
     }
 }
