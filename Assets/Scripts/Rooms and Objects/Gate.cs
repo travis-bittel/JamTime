@@ -4,14 +4,27 @@ using UnityEngine;
 
 public class Gate : RoomObject
 {
-    private bool _isOpen;
-    public bool IsOpen
+    public bool isOpen;
+
+    public void SetOpenState(bool open)
     {
-        get { return _isOpen; }
-        set
+        isOpen = open;
+        if (spriteRenderer == null)
         {
-            _isOpen = value;
-            // Open or close gate (ie enable/disable collider and change visuals)
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = !isOpen;
+        }
+
+        if (col == null)
+        {
+            col = GetComponent<Collider2D>();
+        }
+        if (col != null)
+        {
+            col.enabled = !isOpen;
         }
     }
 }

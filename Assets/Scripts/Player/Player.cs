@@ -64,6 +64,14 @@ public class Player : MonoBehaviour
 
 	public VisionMode heldJamColor; // The color of the jam the player is currently carrying
 
+	[SerializeField]
+	private Rigidbody2D rb;
+
+	[SerializeField]
+	// The object the player will interact with if they press the Interact Key.
+	// Based on interactionPriority of the object if multiple are within interaction range.
+	private InteractableObject currentInteractableObject;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -74,6 +82,11 @@ public class Player : MonoBehaviour
 		direction = PlayerFacing.DOWN;
 		state = PlayerState.IDLE;
 		velocity = new Vector3(0, 0, 0);
+
+		if (rb == null)
+        {
+			rb = GetComponent<Rigidbody2D>();
+		}
 	}
 
 	// Update is called once per frame
@@ -81,7 +94,8 @@ public class Player : MonoBehaviour
 	{
 
 		// End of frame:
-		transform.position += velocity * speedScalar;
+		Vector2 newPosition = new Vector2(transform.position.x + velocity.x * speedScalar, transform.position.y + velocity.y * speedScalar);
+		rb.MovePosition(newPosition);
 	}
 
 	// Happens onPress and Release.
@@ -93,9 +107,12 @@ public class Player : MonoBehaviour
 	}
 	public void OnInteract()
     {
-
-    }
-	public void OnToggleVisionMode()
+		if (currentInteractableObject != null)
+        {
+			currentInteractableObject.OnInteract();
+        }
+	}
+    public void OnToggleVisionMode()
     {
 		if (GameManager.Instance.CurrentVisionMode != heldJamColor)
         {
@@ -122,4 +139,24 @@ public class Player : MonoBehaviour
 			return PlayerFacing.DOWN;
 		}
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+		InteractableObject obj = collision.gameObject.GetComponent<InteractableObject>();
+		if (obj != null)
+        {
+			if (currentInteractableObject == null || obj.interactionPriority > currentInteractableObject.interactionPriority)
+            {
+				currentInteractableObject = obj;
+			}
+		}
+    }
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		InteractableObject obj = collision.gameObject.GetComponent<InteractableObject>();
+		if (currentInteractableObject == obj)
+		{
+			currentInteractableObject = null;
+		}
+	}
 }
