@@ -96,11 +96,6 @@ public class GameManager : MonoBehaviour
 	private void roomChangeStep()
 	{
 		currentTransitionTime = Mathf.Min(transitionTime, currentTransitionTime + Time.deltaTime);
-		// Interpolate camera view.
-		float progress = currentTransitionTime / transitionTime;
-		Vector3 interpolation = cameraStart * (1 - progress) +
-			cameraEnd * progress;
-
 		// End Room Change.
 		if (currentTransitionTime >= transitionTime)
 		{
@@ -108,7 +103,11 @@ public class GameManager : MonoBehaviour
 		} 
 		else
 		{
-			Camera.main.transform.position = interpolation;
+			// Interpolate camera view.
+			float progress = currentTransitionTime / transitionTime;
+			Vector3 interpolation = cameraStart * (1 - progress) + cameraEnd * progress;
+			CameraScript cs = Camera.main.GetComponent<CameraScript>();
+			cs.moveToPosition(interpolation);
 		}
 	}
 
@@ -118,7 +117,7 @@ public class GameManager : MonoBehaviour
 		Debug.Log("Room Transition Complete.");
 		CameraScript cs = Camera.main.GetComponent<CameraScript>();
 		cs.resizeCamera(nextRoom);
+		cs.moveToPosition(nextRoom.transform.position);
 		currentRoom = nextRoom;
-		Camera.main.transform.position = nextRoom.transform.position;
 	}
 }

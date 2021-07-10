@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
     public Room startingRoom;
+    public int screenDepth = -10; 
     private float dividerConst = 2.0f; 
 
     private float aspectRatio;
@@ -14,7 +15,7 @@ public class CameraScript : MonoBehaviour
         aspectRatio = (float)Screen.width / (float)Screen.height;
         resizeCamera(startingRoom);
         transform.position = startingRoom.transform.position;
-        transform.position = new Vector3(startingRoom.transform.position.x, startingRoom.transform.position.y, -1); // -1 to allow the camera to see the room
+        transform.position = new Vector3(startingRoom.transform.position.x, startingRoom.transform.position.y, screenDepth); // -1 to allow the camera to see the room
     }
 
     // Update is called once per frame
@@ -40,4 +41,10 @@ public class CameraScript : MonoBehaviour
         }
         Camera.main.orthographicSize = newOrthoSize;
     }
+
+    public void moveToPosition(Vector3 position)
+	{
+        position.z = screenDepth;
+        this.transform.position = position;
+	}
 }
