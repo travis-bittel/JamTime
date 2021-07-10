@@ -7,15 +7,13 @@ public class CameraScript : MonoBehaviour
     public Room startingRoom;
     private float dividerConst = 2.0f; 
 
-    private Vector3 pointNow;
-    private Vector3 pointNext;
-
     private float aspectRatio;
     // Start is called before the first frame update
     void Start()
     {
         aspectRatio = (float)Screen.width / (float)Screen.height;
         resizeCamera(startingRoom);
+        transform.position = startingRoom.transform.position;
     }
 
     // Update is called once per frame
@@ -40,6 +38,5 @@ public class CameraScript : MonoBehaviour
             newOrthoSize = (roomRatio / aspectRatio) * newRoom.height / dividerConst;
         }
         Camera.main.orthographicSize = newOrthoSize;
-        Debug.Log(newOrthoSize.ToString());
     }
 }
