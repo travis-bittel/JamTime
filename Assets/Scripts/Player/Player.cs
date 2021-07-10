@@ -89,7 +89,10 @@ public class Player : MonoBehaviour
 			rb = GetComponent<Rigidbody2D>();
 		}
 
-		TextManager.Instance.DisplayFixedText(Color.white, "Use Enter to dismiss text.", "Use WASD to move.");
+		if (TextManager.Instance != null)
+        {
+			TextManager.Instance.DisplayFixedText(Color.white, "Use Enter to dismiss text.", "Use WASD to move.");
+		}
 	}
 
 	// Update is called once per frame
@@ -186,11 +189,11 @@ public class Player : MonoBehaviour
             {
 				currentInteractableObject = obj;
 
-				if (obj is JamJar)
+				/*if (obj is JamJar)
                 {
 					heldJamColor = ((JamJar)obj).type;
 					JarBehaviour.instance.pickUp(((JamJar)obj).type);
-                }
+                }*/
 			}
 		}
 
