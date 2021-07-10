@@ -182,8 +182,8 @@ GameObject:
   - component: {fileID: 8416119683728361214}
   - component: {fileID: 8416119683728361215}
   - component: {fileID: 8416119683728361212}
-  - component: {fileID: 541970517399419836}
-  - component: {fileID: 5190073956016028380}
+  - component: {fileID: 1641821770}
+  - component: {fileID: 1641821769}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 0
   state: 1
-  speedScalar: 0.1
+  speedScalar: 0.15
   velocity: {x: 0, y: 0, z: 0}
   heldJamColor: 0
   rb: {fileID: 0}
@@ -315,7 +315,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8416119683728361208}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
