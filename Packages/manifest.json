@@ -14,6 +14,10 @@
     "com.unity.test-framework": "1.1.26",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.4.8",
+<<<<<<< HEAD
+    "com.unity.toolchain.win-x86_64-linux-x86_64": "0.1.20-preview",
+=======
+>>>>>>> 62f36fafc17f40a266a3a9dce6fbb4a9e59153ea
     "com.unity.ugui": "1.0.0",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
