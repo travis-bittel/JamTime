@@ -31,7 +31,7 @@ public class Hive : MonoBehaviour
 
     private void spawnBug(){
         Bug bug = Instantiate(bugPrefab).GetComponent<Bug>();
-        bug.transform.position = transform.position;
         bug.home = transform;
+        bug.transform.position = transform.position;
     }
 }
