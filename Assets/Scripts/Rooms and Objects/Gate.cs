@@ -6,6 +6,11 @@ public class Gate : RoomObject
 {
     public bool isOpen;
 
+    [SerializeField]
+    private Sprite closedSprite;
+    [SerializeField]
+    private Sprite openSprite;
+
     public void SetOpenState(bool open)
     {
         isOpen = open;
