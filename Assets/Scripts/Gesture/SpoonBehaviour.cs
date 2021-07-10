@@ -105,6 +105,8 @@ public class SpoonBehaviour : MonoBehaviour
         _instance = this;
         dirLog = new List<Vector3>();
         dirLog.Add(Vector3.zero);
+
+        Cursor.visible = false;
     }
 
     int measureSeg = 1; // frames per measurement of mouse
@@ -191,6 +193,11 @@ public class SpoonBehaviour : MonoBehaviour
             }
             
         }
+    }
+
+    private void OnDestroy()
+    {
+        Cursor.visible = true;
     }
 
     public void getJamInJar(Vector3 dMPos)

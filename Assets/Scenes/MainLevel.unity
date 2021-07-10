@@ -4378,6 +4378,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8416119683728361212, guid: 1300061d05368f641b87518c91590daf, type: 3}
+      propertyPath: failure_sfx
+      value: event:/SFX/player_clank
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416119683728361212, guid: 1300061d05368f641b87518c91590daf, type: 3}
+      propertyPath: success_sfx
+      value: event:/SFX/player_slurp
+      objectReference: {fileID: 0}
     - target: {fileID: 8416119683728361213, guid: 1300061d05368f641b87518c91590daf, type: 3}
       propertyPath: m_RootOrder
       value: 5
