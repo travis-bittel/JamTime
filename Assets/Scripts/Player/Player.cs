@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -182,14 +183,8 @@ public class Player : MonoBehaviour
                 }
 			}
 		}
-
-		SpoonBehaviour s = collision.gameObject.GetComponent<SpoonBehaviour>();
-		if (s)
-		{
-			s.eat();
-			OnToggleVisionMode();
-		}
 	}
+
 	private void OnTriggerExit2D(Collider2D collision)
 	{
 		InteractableObject obj = collision.gameObject.GetComponent<InteractableObject>();

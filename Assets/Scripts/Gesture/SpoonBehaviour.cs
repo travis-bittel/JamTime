@@ -95,7 +95,7 @@ public class SpoonBehaviour : MonoBehaviour
 
     int measureSeg = 1; // frames per measurement of mouse
     // Update is called once per frame
-    JamHistory jh = null;
+    public JamHistory jh = null;
 
     int jColUpdateSeg = 3;
     void Update()
@@ -161,6 +161,9 @@ public class SpoonBehaviour : MonoBehaviour
         //randomly update jam color inside spoon for "glittering" effect
         if (jamRend.enabled)
         {
+
+            jColL = JarBehaviour.instance.jColL;
+            jColD = JarBehaviour.instance.jColD;
             if (Time.frameCount % jColUpdateSeg == 0)
             {
                 if (Random.value < (0.005f * avg_spd))
@@ -201,9 +204,6 @@ public class SpoonBehaviour : MonoBehaviour
         jh = new JamHistory();
         jh.jType = Player.Instance.heldJamColor;
         rend.color = new Color(1f, 1f, 1f, 0.3f);
-
-        jColL = JarBehaviour.instance.jColL;
-        jColD = JarBehaviour.instance.jColD;
     }
 
     public void onExitJam()
@@ -232,7 +232,7 @@ public class SpoonBehaviour : MonoBehaviour
     }
 }
 
-class JamHistory
+public class JamHistory
 {
     public float netDown = 0.2f;
     public VisionMode jType = VisionMode.DEFAULT;
