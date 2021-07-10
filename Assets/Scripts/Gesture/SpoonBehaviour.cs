@@ -31,10 +31,18 @@ public class SpoonBehaviour : MonoBehaviour
         set
         {
             _jam = Mathf.Min(1, value);
+            /*if (value >= 1)
+            {
+                We don't want to do this anymore, Player instead clears the jar when eating any amount
+
+                // clears jar when scooping a lot
+                Player.Instance.heldJamColor = VisionMode.DEFAULT;
+            }*/
             if (jamRend != null)
             {
                 jamRend.enabled = _jam > 0;
-                jamRend.transform.localScale = Vector3.one * _jam;
+                jamRend.transform.localPosition = Vector3.zero;
+                jamRend.transform.localScale = Vector3.one * _jam * 0.23f;
             }
             if (_jam == 0) {
                 jh = null;
@@ -45,6 +53,7 @@ public class SpoonBehaviour : MonoBehaviour
 
     public Animator anim;
 
+    Animator jamWobbler;
     SpriteRenderer jamRend;
     Rigidbody2D rig;
     GameObject jamAnchor;
@@ -93,6 +102,7 @@ public class SpoonBehaviour : MonoBehaviour
 
         jamAnchor = transform.GetChild(0).gameObject;
         jamRend = jamAnchor.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        jamWobbler = jamRend.GetComponent<Animator>();
         anim = GetComponent<Animator>();
         // spoonBounds = GetComponent<CapsuleCollider2D>();
 
@@ -191,8 +201,10 @@ public class SpoonBehaviour : MonoBehaviour
                     jamRend.color = jColD;
                 }
             }
-            
+
         }
+
+        jamWobbler.speed = avg_spd / jam_spillage * 20.0f;
 
         lastPos = transform.position;
     }

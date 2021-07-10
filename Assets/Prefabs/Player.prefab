@@ -315,6 +315,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   jamAmount: 0.0001
+  success_sfx: event:/SFX/player_slurp
+  failure_sfx: event:/SFX/player_clank
   direction: 0
   state: 1
   speedScalar: 0.15

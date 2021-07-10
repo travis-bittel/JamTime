@@ -168,6 +168,7 @@ public class Player : SpoonListener
 	public void OnToggleVisionModeOn()
     {
 		GameManager.Instance.CurrentVisionMode = heldJamColor;
+		heldJamColor = VisionMode.DEFAULT; // Remove jam jar whenever the player uses any amount of jam
 		StartCoroutine(OnToggleVisionModeOff());
 	}
 

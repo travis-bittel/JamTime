@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class JarBehaviour : MonoBehaviour
 {
-    BoxCollider2D box;
+    //BoxCollider2D box;
+    CapsuleCollider2D capsule;
     SpriteRenderer rend;
+
+    public Sprite purple, red, yellow, empty;
 
     static JarBehaviour _instance;
     public static JarBehaviour instance
@@ -16,22 +19,26 @@ public class JarBehaviour : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        capsule = GetComponent<CapsuleCollider2D>();
+        rend = GetComponent<SpriteRenderer>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        box = GetComponent<BoxCollider2D>();
-        rend = GetComponent<SpriteRenderer>();
+        // box = GetComponent<BoxCollider2D>();
+        // capsule = GetComponent<CapsuleCollider2D>();
+        // rend = GetComponent<SpriteRenderer>();
 
         // force set to default
-        pickUp(VisionMode.DEFAULT);
+        // pickUp(VisionMode.DEFAULT);
+        rend.color = Color.clear;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Bounds bounds = box.bounds;
+        Bounds bounds = capsule.bounds;
         // Debug.Log(bounds.size.x + ", " + bounds.size.y);
         // snap to lower left corner
         Vector3 ll = Camera.main.ScreenToWorldPoint(
@@ -43,22 +50,38 @@ public class JarBehaviour : MonoBehaviour
             
             ) + new Vector3(
                 bounds.size.x / 2.0f,
-                bounds.size.x / 2.0f,
+                bounds.size.y / 2.0f,
                 0.0f
                 );
 
         transform.position = ll;
 
-        rend.color = jColL;
+        //rend.color = jColL;
     }
 
     public void pickUp(VisionMode vm)
     {
-        if (rend == null || box == null) { return; }
-        box.enabled = true;
+        if (rend == null || capsule == null) { return; }
+        capsule.enabled = true;
         System.Tuple<Color, Color> jCols = jamToCol(vm);
         jColL = jCols.Item1;
         jColD = jCols.Item2;
+        rend.color = Color.white;
+        switch (vm)
+        {
+            case VisionMode.PURPLE:
+                rend.sprite = purple;
+                break;
+            case VisionMode.RED:
+                rend.sprite = red;
+                break;
+            case VisionMode.YELLOW:
+                rend.sprite = yellow;
+                break;
+            case VisionMode.DEFAULT:
+                rend.sprite = empty;
+                break;
+        }
     }
 
     public Color jColL = Color.clear, jColD = Color.clear;
