@@ -8,7 +8,7 @@ public class ButtonObject : InteractableObject
     // Specifies what the button does
     public List<ButtonObjectInteraction> buttonInteractions;
 
-    public void OnInteract()
+    public override void OnInteract()
     {
         foreach (ButtonObjectInteraction interaction in buttonInteractions)
         {
@@ -17,7 +17,7 @@ public class ButtonObject : InteractableObject
                 case ButtonActionType.OPEN_GATE:
                     if (interaction.roomObject is Gate)
                     {
-                        ((Gate)interaction.roomObject).IsOpen = true;
+                        ((Gate)interaction.roomObject).SetOpenState(true);
                     } else
                     {
                         Debug.LogError("Attempted ButtonActionType OPEN_GATE on non-Gate object");
@@ -26,7 +26,7 @@ public class ButtonObject : InteractableObject
                 case ButtonActionType.CLOSE_GATE:
                     if (interaction.roomObject is Gate)
                     {
-                        ((Gate)interaction.roomObject).IsOpen = false;
+                        ((Gate)interaction.roomObject).SetOpenState(false);
                     }
                     else
                     {
@@ -36,7 +36,7 @@ public class ButtonObject : InteractableObject
                 case ButtonActionType.TOGGLE_GATE:
                     if (interaction.roomObject is Gate)
                     {
-                        ((Gate)interaction.roomObject).IsOpen = !((Gate)interaction.roomObject).IsOpen;
+                        ((Gate)interaction.roomObject).SetOpenState(!((Gate)interaction.roomObject).isOpen);
                     }
                     else
                     {
