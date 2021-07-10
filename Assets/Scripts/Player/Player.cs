@@ -71,6 +71,8 @@ public class Player : MonoBehaviour
 	// Based on interactionPriority of the object if multiple are within interaction range.
 	private InteractableObject currentInteractableObject;
 
+	public bool canMove;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -86,15 +88,19 @@ public class Player : MonoBehaviour
         {
 			rb = GetComponent<Rigidbody2D>();
 		}
+
+		TextManager.Instance.DisplayFixedText(Color.white, "Use Enter to dismiss text.", "Use WASD to move.");
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-
 		// End of frame:
-		Vector2 newPosition = new Vector2(transform.position.x + velocity.x * speedScalar, transform.position.y + velocity.y * speedScalar);
-		rb.MovePosition(newPosition);
+		if (canMove)
+        {
+			Vector2 newPosition = new Vector2(transform.position.x + velocity.x * speedScalar, transform.position.y + velocity.y * speedScalar);
+			rb.MovePosition(newPosition);
+		}
 	}
 
 	// Happens onPress and Release.
@@ -111,6 +117,11 @@ public class Player : MonoBehaviour
 			currentInteractableObject.OnInteract();
         }
 	}
+
+	public void OnAdvanceText()
+    {
+		TextManager.Instance.NextSentence();
+    }
 
 	public void OnCollisionEnter2D(Collision2D collision)
 	{
