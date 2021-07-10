@@ -17,6 +17,12 @@ public class SpoonBehaviour : MonoBehaviour
 
     float zInit = 10;
 
+    private static SpoonBehaviour _instance;
+    public static SpoonBehaviour Instance
+    {
+        get { return _instance; }
+    }
+
     public float jam_spillage;
     public float _jam = 0;
     // the current amount of jam in the spoon
@@ -81,6 +87,7 @@ public class SpoonBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _instance = this;
         dirLog = new List<Vector3>();
         dirLog.Add(Vector3.zero);
 
@@ -104,8 +111,8 @@ public class SpoonBehaviour : MonoBehaviour
         Vector3 mPosT = mPos;
         mPos = Camera.main.ScreenToWorldPoint(
             new Vector3(
-                Mouse.current.position.x.ReadValue(),
-                Mouse.current.position.y.ReadValue(),
+                Pointer.current.position.x.ReadValue(),
+                Pointer.current.position.y.ReadValue(),
                 zInit
                 )
             );
@@ -151,11 +158,13 @@ public class SpoonBehaviour : MonoBehaviour
             {
                 spillJam(dm / Time.deltaTime);
             }
+            /*
             jamRend.gameObject.transform.localPosition = new Vector3(
                    Mathf.Sin(Time.time *12) * Mathf.Max(Mathf.Abs(avg_spd / jam_spillage), 1) * Mathf.Abs(avg_dir.x),
                    Mathf.Abs(Mathf.Sin(Time.time * 10f) * Mathf.Max(Mathf.Abs(avg_spd / jam_spillage), 1) * Mathf.Abs(avg_dir.y)),
                    0.0f
                    ) * 0.03f * jam;
+            */
         }
 
         //randomly update jam color inside spoon for "glittering" effect
@@ -175,12 +184,6 @@ public class SpoonBehaviour : MonoBehaviour
             }
             
         }
-    }
-
-    // detect eating gesture
-    public void eat()
-    {
-        jam = 0;
     }
 
     public void getJamInJar(Vector3 dMPos)
