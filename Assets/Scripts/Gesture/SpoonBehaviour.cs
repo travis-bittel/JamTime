@@ -18,13 +18,13 @@ public class SpoonBehaviour : MonoBehaviour
     float zInit = 10;
 
     public float jam_spillage = 5;
-    float _jam;
+    float _jam = 0;
     // the current amount of jam in the spoon
     public float jam
     {
         set
         {
-            _jam = Mathf.Min(1.5f, value);
+            _jam = Mathf.Min(1, value);
             if (jamRend != null)
             {
                 jamRend.enabled = _jam > 0;
@@ -39,7 +39,7 @@ public class SpoonBehaviour : MonoBehaviour
 
     SpriteRenderer jamRend;
     GameObject jamAnchor;
-    CapsuleCollider2D spoonBounds;
+    // CapsuleCollider2D spoonBounds;
 
     /*
     // singleton setup for spoon object
@@ -70,7 +70,7 @@ public class SpoonBehaviour : MonoBehaviour
         jamRend = jamAnchor.transform.GetChild(0).GetComponent<SpriteRenderer>();
         jam = 0;
 
-        spoonBounds = GetComponent<CapsuleCollider2D>();
+        // spoonBounds = GetComponent<CapsuleCollider2D>();
     }
 
     int measureSeg = 1; // frames per measurement of mouse
@@ -121,13 +121,13 @@ public class SpoonBehaviour : MonoBehaviour
 
         if (inJar)
         {
-            getJamInJar(dm);
+            getJamInJar(dm / Time.deltaTime);
         }// spill jam
         else if (jam > 0)
         {
-            if (avg_spd > jam_spillage)
+            if ((dm.magnitude) / Time.deltaTime > jam_spillage)
             {
-                spillJam(mPos - mPosT);
+                spillJam(dm / Time.deltaTime);
             }
             jamRend.gameObject.transform.localPosition = new Vector3(
                    Mathf.Sin(Time.time *12) * Mathf.Max(Mathf.Abs(avg_spd / jam_spillage), 1) * Mathf.Abs(avg_dir.x),
@@ -147,7 +147,7 @@ public class SpoonBehaviour : MonoBehaviour
     {
         if (jh != null) {
             jh.update(dMPos);
-            jam = jh.netDown * -1;
+            jam = jh.netDown * -0.025f;
         }
         else
         {
@@ -168,13 +168,10 @@ public class SpoonBehaviour : MonoBehaviour
         GameObject newJam = Instantiate(jamAnchor);
 
         Rigidbody2D jamRig = newJam.AddComponent<Rigidbody2D>();
+        jamRig.transform.position = transform.position;
         jamRig.gravityScale = 2f;
         jamRig.position = transform.position;
-        jamRig.velocity = new Vector3(
-            dMPos.x,
-            dMPos.y,
-            dMPos.z
-            );
+        jamRig.velocity = Vector3.zero;
         jamRig.drag = 0.2f;
 
         // preserve size of the new jam object

@@ -35,7 +35,7 @@ public class JarBehaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collision icon");
+        // Debug.Log("collision icon");
         SpoonBehaviour s = collision.gameObject.GetComponent<SpoonBehaviour>();
         if (s)
         {
