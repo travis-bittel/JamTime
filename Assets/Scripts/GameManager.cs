@@ -63,6 +63,8 @@ public class GameManager : MonoBehaviour
 	{
 		CurrentVisionMode = VisionMode.DEFAULT;
 		movingCamera = false;
+		CameraScript cs = Camera.main.GetComponent<CameraScript>();
+		cs.moveToPosition(currentRoom.transform.position);
 	}
 
 	private void Update()
