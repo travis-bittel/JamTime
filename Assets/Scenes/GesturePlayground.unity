@@ -299,13 +299,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 856393184}
     m_Modifications:
+    - target: {fileID: 4270716570797007888, guid: 56eed249917930e429da6510646a9244, type: 3}
+      propertyPath: m_SortingOrder
+      value: 102
+      objectReference: {fileID: 0}
     - target: {fileID: 4270716570797007889, guid: 56eed249917930e429da6510646a9244, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4270716570797007889, guid: 56eed249917930e429da6510646a9244, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.93
+      value: -8.96
       objectReference: {fileID: 0}
     - target: {fileID: 4270716570797007889, guid: 56eed249917930e429da6510646a9244, type: 3}
       propertyPath: m_LocalPosition.y
@@ -411,6 +415,10 @@ PrefabInstance:
     - target: {fileID: 4615109099841237712, guid: eb99ae2059d03ca429f63982570dff1b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4615109099841237713, guid: eb99ae2059d03ca429f63982570dff1b, type: 3}
+      propertyPath: jam_spillage
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 4615109099861870899, guid: eb99ae2059d03ca429f63982570dff1b, type: 3}
       propertyPath: m_IsActive

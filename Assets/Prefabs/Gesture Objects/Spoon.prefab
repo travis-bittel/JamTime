@@ -133,7 +133,7 @@ MonoBehaviour:
   avg_spd: 0
   avg_dir: {x: 0, y: 0, z: 0}
   rend: {fileID: 0}
-  jam_spillage: 40
+  jam_spillage: 100
   inJar: 0
 --- !u!212 &4615109099841237714
 SpriteRenderer:

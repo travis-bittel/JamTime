@@ -17,8 +17,8 @@ public class SpoonBehaviour : MonoBehaviour
 
     float zInit = 10;
 
-    public float jam_spillage = 5;
-    float _jam = 0;
+    public float jam_spillage;
+    public float _jam = 0;
     // the current amount of jam in the spoon
     public float jam
     {
@@ -68,8 +68,6 @@ public class SpoonBehaviour : MonoBehaviour
 
         jamAnchor = transform.GetChild(0).gameObject;
         jamRend = jamAnchor.transform.GetChild(0).GetComponent<SpriteRenderer>();
-        jam = 0;
-
         // spoonBounds = GetComponent<CapsuleCollider2D>();
     }
 
@@ -121,7 +119,7 @@ public class SpoonBehaviour : MonoBehaviour
 
         if (inJar)
         {
-            getJamInJar(dm / Time.deltaTime);
+            getJamInJar(dm);
         }// spill jam
         else if (jam > 0)
         {
@@ -147,7 +145,7 @@ public class SpoonBehaviour : MonoBehaviour
     {
         if (jh != null) {
             jh.update(dMPos);
-            jam = jh.netDown * -0.025f;
+            jam = jh.netDown * -0.33f;
         }
         else
         {
