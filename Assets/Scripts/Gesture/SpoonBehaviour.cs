@@ -105,6 +105,7 @@ public class SpoonBehaviour : MonoBehaviour
         _instance = this;
         dirLog = new List<Vector3>();
         dirLog.Add(Vector3.zero);
+        lastPos = transform.position;
     }
 
     int measureSeg = 1; // frames per measurement of mouse
@@ -112,6 +113,7 @@ public class SpoonBehaviour : MonoBehaviour
     JamHistory jh = null;
 
     int jColUpdateSeg = 3;
+    Vector3 lastPos = Vector3.zero;
     void Update()
     {
         // calculate mouse position per frame
@@ -157,11 +159,11 @@ public class SpoonBehaviour : MonoBehaviour
 
         if (inJar)
         {
-            getJamInJar(dm);
+            getJamInJar(transform.position - lastPos);
         }// spill jam
         else if (jam > 0)
         {
-            if ((dm.magnitude) / Time.deltaTime > jam_spillage)
+            if (dm.magnitude / Time.deltaTime > jam_spillage)
             {
                 spillJam(dm / Time.deltaTime);
             }
@@ -191,6 +193,8 @@ public class SpoonBehaviour : MonoBehaviour
             }
             
         }
+
+        lastPos = transform.position;
     }
 
     private void OnBecameVisible()
