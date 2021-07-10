@@ -10,7 +10,7 @@ public class JamJar : InteractableObject
     public override void OnInteract()
     {
         Player.Instance.heldJamColor = type;
-        GameManager.Instance.CurrentVisionMode = VisionMode.DEFAULT;
+        // GameManager.Instance.CurrentVisionMode = VisionMode.DEFAULT;
         // Play pickup sound
     }
 

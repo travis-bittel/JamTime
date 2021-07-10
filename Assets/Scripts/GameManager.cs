@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
 			else
 			{
 				currentRoom.UpdateRoomObjectVisibility();
-
 			}
 		}
 	}
