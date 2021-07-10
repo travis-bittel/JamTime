@@ -185,9 +185,22 @@ public class Player : MonoBehaviour
 			if (currentInteractableObject == null || obj.interactionPriority > currentInteractableObject.interactionPriority)
             {
 				currentInteractableObject = obj;
+
+				if (obj is JamJar)
+                {
+					heldJamColor = ((JamJar)obj).type;
+					JarBehaviour.instance.pickUp(((JamJar)obj).type);
+                }
 			}
 		}
-    }
+
+		SpoonBehaviour s = collision.gameObject.GetComponent<SpoonBehaviour>();
+		if (s)
+		{
+			s.eat();
+			OnToggleVisionMode();
+		}
+	}
 	private void OnTriggerExit2D(Collider2D collision)
 	{
 		InteractableObject obj = collision.gameObject.GetComponent<InteractableObject>();
