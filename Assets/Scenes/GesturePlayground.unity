@@ -1139,30 +1139,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &607297202 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4615109099841237711, guid: eb99ae2059d03ca429f63982570dff1b, type: 3}
-  m_PrefabInstance: {fileID: 4615109100304103520}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &607297203
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 607297202}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c76546046c98f7a46be1ec183b8ea624, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &999021867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2053,10 +2029,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4270716570797007888, guid: 56eed249917930e429da6510646a9244, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4270716570797007889, guid: 56eed249917930e429da6510646a9244, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2104,14 +2076,6 @@ PrefabInstance:
     - target: {fileID: 4270716570797007890, guid: 56eed249917930e429da6510646a9244, type: 3}
       propertyPath: m_Name
       value: Jar
-      objectReference: {fileID: 0}
-    - target: {fileID: 4270716570797007902, guid: 56eed249917930e429da6510646a9244, type: 3}
-      propertyPath: m_UseFullKinematicContacts
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4270716570797007903, guid: 56eed249917930e429da6510646a9244, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56eed249917930e429da6510646a9244, type: 3}
@@ -2177,10 +2141,6 @@ PrefabInstance:
     - target: {fileID: 4615109099841237712, guid: eb99ae2059d03ca429f63982570dff1b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615109099841237715, guid: eb99ae2059d03ca429f63982570dff1b, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4615109099861870899, guid: eb99ae2059d03ca429f63982570dff1b, type: 3}
       propertyPath: m_IsActive
