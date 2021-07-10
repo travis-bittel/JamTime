@@ -210,8 +210,8 @@ public class SpoonBehaviour : MonoBehaviour
     public void getJamInJar(Vector3 dMPos)
     {
         if (jh != null) {
-            jh.update(dMPos);
-            jam = jh.netDown * -0.33f;
+            jh.update(avg_spd, jam_spillage);
+            jam = jh.netDown;
         }
         else
         {
@@ -272,8 +272,9 @@ class JamHistory
     public VisionMode jType = VisionMode.DEFAULT;
 
     // return if currently in downstroke
-    public bool update(Vector3 dMPos)
+    public bool update(float spd, float max_spd)
     {
+        /*
         float dy = dMPos.y;
         float dx = dMPos.x;
         // player can scoop down and left
@@ -284,7 +285,9 @@ class JamHistory
         {
             netDown += dx;
         }
-        return dy < 0;
+        return dy < 0;*/
+        netDown += Time.deltaTime * spd / max_spd / 0.3f;
+        return true;
     }
 }
 
