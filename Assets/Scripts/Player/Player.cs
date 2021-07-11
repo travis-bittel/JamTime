@@ -283,4 +283,12 @@ public class Player : SpoonListener
 			gm.changeRooms();
 		}
 	}
+
+	[FMODUnity.EventRef]
+	public string footstep;
+
+	public void PlayFootStep()
+    {
+		FMODUnity.RuntimeManager.PlayOneShot(footstep, transform.position);
+    }
 }

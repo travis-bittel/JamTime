@@ -327,6 +327,7 @@ MonoBehaviour:
   currentInteractableObject: {fileID: 0}
   canMove: 1
   mAnimSpd: 0.36
+  footstep: 
 --- !u!50 &1641821770
 Rigidbody2D:
   serializedVersion: 4
