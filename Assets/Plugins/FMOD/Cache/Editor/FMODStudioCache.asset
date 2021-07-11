@@ -67,7 +67,53 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 266
---- !u!114 &-3739691763394597156
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 2129144483695646682}
+  - {fileID: 8682747121555185525}
+  EditorEvents:
+  - {fileID: 8852028536691030907}
+  - {fileID: -701408859242036626}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 8682747121555185525}
+  StringsBanks:
+  - {fileID: 2129144483695646682}
+  stringsBankWriteTime: 637615303362220684
+  cacheVersion: 6
+--- !u!114 &2129144483695646682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: JamminFMOD/jammin/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637615303362220684
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 802
+  Exists: 1
+--- !u!114 &8682747121555185525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,7 +128,7 @@ MonoBehaviour:
   Path: JamminFMOD/jammin/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637615405673894777
+  lastModified: 637615303362210678
   LoadResult: 0
   FileSizes: []
   Exists: 1
