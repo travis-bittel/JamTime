@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1318220956224870431}
   - component: {fileID: 1318220956224870424}
   - component: {fileID: 1318220956224870429}
+  - component: {fileID: 196482899877621163}
   m_Layer: 0
   m_Name: PurpleJamJar
   m_TagString: Untagged
@@ -52,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,3 +116,36 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
+--- !u!114 &196482899877621163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318220956224870425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 0
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.27911258, y: -0.37048316, z: 0}
+  - {x: -0.045115363, y: -0.45950833, z: 0}
+  - {x: 0.22989719, y: -0.41629362, z: 0}
+  - {x: 0.336353, y: -0.2866555, z: 0}
+  - {x: 0.3661552, y: -0.075059764, z: 0}
+  - {x: 0.3065508, y: 0.23190308, z: 0}
+  - {x: 0.30144855, y: 0.25347385, z: 0}
+  - {x: -0.28272277, y: 0.2602443, z: 0}
+  - {x: -0.30518192, y: 0.25748512, z: 0}
+  - {x: -0.3922515, y: -0.088344924, z: 0}
+  - {x: -0.34909794, y: -0.2568533, z: 0}
+  m_ShapePathHash: -89480345
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 48858

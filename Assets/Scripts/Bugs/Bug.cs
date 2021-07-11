@@ -9,6 +9,9 @@ public class Bug : SpoonListener
     public float speed;
     public BugStrat strategy;
 
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -17,6 +20,8 @@ public class Bug : SpoonListener
 		{
             this.strategy = new TakeJamBugStrat(home);
         }
+
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -29,6 +34,13 @@ public class Bug : SpoonListener
 	{
         Vector3 movement = (target.position - transform.position);
         movement = movement.normalized * speed;
+        if (movement.x >= 0)
+        {
+            spriteRenderer.flipY = true;
+        } else
+        {
+            spriteRenderer.flipY = false;
+        }
         this.transform.position += movement;
     }
 
