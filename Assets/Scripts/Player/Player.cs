@@ -185,32 +185,6 @@ public class Player : SpoonListener
 		Application.Quit();
     }
 
-	/*	public void OnCollisionEnter2D(Collision2D collision)
-		{
-			// If colliding with another room.
-			GameObject other = collision.gameObject;
-			if (other.CompareTag("Room"))
-			{
-				GameManager.Instance.queuedRoom = other.GetComponent<Room>();
-			}
-		}*/
-
-	/*	public void OnCollisionExit2D(Collision2D collision)
-		{
-			GameManager gm = GameManager.Instance;
-			// If colliding with another room...
-			GameObject other = collision.gameObject;
-			if (other.CompareTag("Room"))
-			{
-				Room nextRoom = other.GetComponent<Room>();
-				if (nextRoom == gm.queuedRoom)
-				{
-					gm.roomChangeEnd(nextRoom);
-				}
-				gm.changeRooms();
-			}
-		}*/
-
 	[FMODUnity.EventRef]
 	public string vision_on, vision_off;
 	public void OnToggleVisionModeOn()
@@ -284,6 +258,13 @@ public class Player : SpoonListener
 		if (other.CompareTag("Room"))
 		{
 			GameManager.Instance.queuedRoom = other.GetComponent<Room>();
+		}
+		if (other.CompareTag("FinalJam"))
+		{
+			CanvasScript Screen = CanvasScript.Instance;
+			Screen.nextScene = "ChangeSceneTest";
+			Screen.ready = true;
+			Screen.OnAdvanceText();
 		}
 	}
 	private void OnTriggerExit2D(Collider2D collision)
