@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6046483098671319161}
   - component: {fileID: 6046483098671319167}
   - component: {fileID: 6046483098671319166}
+  - component: {fileID: 1872689736523588860}
   m_Layer: 0
   m_Name: Hive
   m_TagString: Untagged
@@ -125,6 +126,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.5421295, y: 3.9116254}
   m_EdgeRadius: 0
+--- !u!114 &1872689736523588860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6046483098671319162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 0
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -1.28, y: -1.28, z: 0}
+  - {x: 0, y: -1.6, z: 0}
+  - {x: 1.28, y: -1.28, z: 0}
+  - {x: 1.45, y: -0.17, z: 0}
+  - {x: -0.04, y: 0.31, z: 0}
+  - {x: -1.76, y: -0.14, z: 0}
+  m_ShapePathHash: -2040374833
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -146960
 --- !u!1001 &136047068
 PrefabInstance:
   m_ObjectHideFlags: 0

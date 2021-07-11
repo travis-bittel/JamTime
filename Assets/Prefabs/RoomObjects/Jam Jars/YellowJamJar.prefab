@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5328330604407317515}
   - component: {fileID: 5328330604407317514}
   - component: {fileID: 5328330604407317513}
+  - component: {fileID: -5686975827250775707}
   m_Layer: 0
   m_Name: YellowJamJar
   m_TagString: Untagged
@@ -115,3 +116,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
+--- !u!114 &-5686975827250775707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5328330604407317512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.27139866, y: -0.399981, z: 0}
+  - {x: -0.046038914, y: -0.4723086, z: 0}
+  - {x: 0.20957592, y: -0.43336782, z: 0}
+  - {x: 0.33815822, y: -0.26862177, z: 0}
+  - {x: 0.37382105, y: 0.004368937, z: 0}
+  - {x: 0.30529472, y: 0.23424922, z: 0}
+  - {x: -0.31126162, y: 0.22258043, z: 0}
+  - {x: -0.36619103, y: -0.03978386, z: 0}
+  m_ShapePathHash: 1197583348
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -118846
