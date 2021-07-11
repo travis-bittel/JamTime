@@ -123,8 +123,8 @@ MonoBehaviour:
   red: {fileID: 21300000, guid: 3c04943262a36934ab102c2e362e6537, type: 3}
   yellow: {fileID: 21300000, guid: 3e95dd26a6fcf9d42bf792ee02bbb19f, type: 3}
   empty: {fileID: 21300000, guid: 92fbe9773f5508e4494f47c23d64c86a, type: 3}
-  fill_jar: event:/SFX/generic
-  empty_jar: event:/SFX/generic
+  fill_jar: event:/SFX/jFill
+  empty_jar: event:/SFX/jEmpty
   jColL: {r: 0, g: 0, b: 0, a: 0}
   jColD: {r: 0, g: 0, b: 0, a: 0}
 --- !u!70 &1954192119817512485
