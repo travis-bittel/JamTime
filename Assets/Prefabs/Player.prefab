@@ -330,7 +330,7 @@ MonoBehaviour:
   general_interaction: event:/SFX/generic
   highlight_interaction: event:/SFX/intr
   vision_on: event:/SFX/vOn
-  vision_off: event:/SFX/vOn
+  vision_off: event:/SFX/vOff
   footstep: event:/MusicLoop/Footstep
 --- !u!50 &1641821770
 Rigidbody2D:
@@ -425,4 +425,4 @@ MonoBehaviour:
   - {x: -1.0319355, y: -0.024401778, z: 0}
   m_ShapePathHash: 2060096857
   m_Mesh: {fileID: 0}
-  m_InstanceId: 32412
+  m_InstanceId: 44892

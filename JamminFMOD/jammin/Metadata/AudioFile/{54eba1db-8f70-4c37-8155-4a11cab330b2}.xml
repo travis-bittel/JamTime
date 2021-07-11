@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{54eba1db-8f70-4c37-8155-4a11cab330b2}">
+		<property name="assetPath">
+			<value>Sfx_Jam_Timer.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.2334920634920636</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6c95e610-443a-4374-b79e-5eca5f9e0054}</destination>
+		</relationship>
+	</object>
+</objects>

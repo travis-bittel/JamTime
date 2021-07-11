@@ -48,10 +48,7 @@ public class GameManager : MonoBehaviour
 	[FMODUnity.EventRef]
 	public string forest_ambience, background_music;
 	FMOD.Studio.EventInstance forest, bgm;
-
-	[Range(0, 1)]
-	public float music_level;
-	bool _music = true;
+	/*
 	public bool music
     {
 		get {
@@ -66,7 +63,7 @@ public class GameManager : MonoBehaviour
 				else { bgm.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); }
             }
         }
-    }
+    }*/
 
 	public VisionMode CurrentVisionMode
 	{
@@ -108,13 +105,14 @@ public class GameManager : MonoBehaviour
 		forest = FMODUnity.RuntimeManager.CreateInstance(forest_ambience);
 
 		if (forest.isValid()) { forest.start(); }
-		music = true;
+		if (bgm.isValid()) { bgm.start(); }
+		//music = true;
 	}
 
     private void OnDisable()
     {
 		if (forest.isValid()) { forest.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); }
-		music = false;
+		//music = false;
 	}
 
     private void Update()
