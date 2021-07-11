@@ -59,12 +59,6 @@ public class Bug : SpoonListener
             else
                 FMODUnity.RuntimeManager.PlayOneShot(interact, transform.position);
         }
-
-        if (other.GetComponent<SpoonBehaviour>() != null)
-        {
-            FMODUnity.RuntimeManager.PlayOneShot(eat, transform.position);
-            SpoonBehaviour.Instance.jam = 0.0f;
-        }
     }
 
 	private void OnCollisionStay2D(Collision2D collision)
