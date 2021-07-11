@@ -106,6 +106,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{d42ac95c-9dca-418d-b83c-787e481ffb4a}">
+		<property name="volume">
+			<value>-19</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -129,13 +132,14 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{cc26a737-6f55-4fa0-b864-99e16b9f8272}">
 		<relationship name="effects">
+			<destination>{e26e6e68-4d0a-4646-b348-8f54036c076d}</destination>
 			<destination>{ec20f55e-b97f-45cb-83ef-f8bfa542ee4d}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{2932e3c2-51cb-47c9-959f-3c6e77d3225b}">
-		<relationship name="modulators">
-			<destination>{678ca19f-b7a9-486e-bce3-57e0b33a630d}</destination>
-		</relationship>
+		<property name="stereoPan">
+			<value>-58</value>
+		</property>
 	</object>
 	<object class="MixerBusFader" id="{b648da49-bbdb-42be-bfe5-16310a48ffbf}" />
 	<object class="FadeCurve" id="{e7c382c5-7d99-4661-ba48-de54d5201a3d}">
@@ -160,15 +164,21 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{5ab742b1-9edf-418a-b970-7f42dbbf4aa6}" />
-	<object class="MixerBusFader" id="{ec20f55e-b97f-45cb-83ef-f8bfa542ee4d}" />
-	<object class="RandomizerModulator" id="{678ca19f-b7a9-486e-bce3-57e0b33a630d}">
-		<property name="nameOfPropertyBeingModulated">
-			<value>stereoPan</value>
+	<object class="ThreeEQEffect" id="{e26e6e68-4d0a-4646-b348-8f54036c076d}">
+		<property name="lowGain">
+			<value>-76</value>
 		</property>
-		<property name="amount">
-			<value>22.5</value>
+		<property name="midGain">
+			<value>-3.5</value>
+		</property>
+		<property name="highGain">
+			<value>-72</value>
+		</property>
+		<property name="highCrossover">
+			<value>2600</value>
 		</property>
 	</object>
+	<object class="MixerBusFader" id="{ec20f55e-b97f-45cb-83ef-f8bfa542ee4d}" />
 	<object class="AutomationPoint" id="{75a39ca7-dc17-41ea-b2ae-80cbefb3feac}">
 		<property name="position">
 			<value>0</value>

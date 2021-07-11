@@ -131,9 +131,13 @@ public class Player : SpoonListener
         {
 			Vector2 newPosition = new Vector2(transform.position.x + velocity.x * speedScalar, transform.position.y + velocity.y * speedScalar);
 			rb.MovePosition(newPosition);
+			anim.speed = velocity.magnitude / speedScalar * mAnimSpd;
 		}
+		else
+        {
+			anim.speed = 0;
+        }
 
-		anim.speed = velocity.magnitude / speedScalar * mAnimSpd;
 		transform.rotation = Quaternion.LookRotation(Vector3.forward, velocity);
 
 		if (hintText != null)
@@ -154,14 +158,15 @@ public class Player : SpoonListener
 	}
 
 	[FMODUnity.EventRef]
-	public string general_interaction;
+	public string general_interaction, highlight_interaction;
 
 	public void OnInteract()
     {
 		if (currentInteractableObject != null)
         {
 			currentInteractableObject.OnInteract();
-			//FMODUnity.RuntimeManager.PlayOneShot(general_interaction, transform.position);
+			if (!(currentInteractableObject is ButtonObject))
+				FMODUnity.RuntimeManager.PlayOneShot(highlight_interaction, transform.position);
 		}
 	}
 
@@ -300,6 +305,7 @@ public class Player : SpoonListener
 
 	public void PlayFootStep()
     {
-		FMODUnity.RuntimeManager.PlayOneShot(footstep, transform.position);
+		if (canMove)
+			FMODUnity.RuntimeManager.PlayOneShot(footstep, transform.position);
     }
 }

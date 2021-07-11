@@ -132,15 +132,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   jamAmount: 0
-  success_sfx: event:/SFX/player_slurp
+  success_sfx: event:/SFX/bEat
   failure_sfx: event:/SFX/player_clank
   target: {fileID: 0}
   home: {fileID: 0}
   speed: 0.015
   spriteRenderer: {fileID: 0}
-  spawn: event:/SFX/generic
-  eat: event:/SFX/player_slurp
-  interact: event:/SFX/generic
+  spawn: event:/SFX/bInt
+  eat: event:/SFX/bEat
+  interact: event:/SFX/bInt
 --- !u!61 &6334204878558889974
 BoxCollider2D:
   m_ObjectHideFlags: 0
