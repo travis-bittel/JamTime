@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3579946275353019147}
   - component: {fileID: 3579946275353019146}
+  - component: {fileID: 5154406028886705936}
   m_Layer: 0
   m_Name: SimplePointLight
   m_TagString: Untagged
@@ -47,8 +48,8 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 0.9857387, g: 1, b: 0.7122642, a: 1}
-  m_Intensity: 0.34
-  m_LightVolumeOpacity: 0.446
+  m_Intensity: 0.33
+  m_LightVolumeOpacity: 0.18
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
@@ -59,7 +60,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 6.02
+  m_PointLightOuterRadius: 12.78
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -72,3 +73,16 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &5154406028886705936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3579946275353019145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede6edff55e1c1e45aa405b9b01136f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deviation: 0.1

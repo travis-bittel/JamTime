@@ -21,6 +21,7 @@ public class JarBehaviour : MonoBehaviour
         _instance = this;
         capsule = GetComponent<CapsuleCollider2D>();
         rend = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -102,6 +103,7 @@ public class JarBehaviour : MonoBehaviour
         return new System.Tuple<Color, Color>(Color.clear, Color.clear);
     }
 
+    Animator anim;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Debug.Log("collision icon");
@@ -109,6 +111,11 @@ public class JarBehaviour : MonoBehaviour
         if (s != null && Player.Instance.heldJamColor != VisionMode.DEFAULT)
         {
             s.inJar = true;
+
+            if (anim)
+            {
+                anim.SetBool("wobble", true);
+            }
         }
     }
 
@@ -118,6 +125,11 @@ public class JarBehaviour : MonoBehaviour
         if (s)
         {
             s.inJar = false;
+            
+            if (anim)
+            {
+                anim.SetBool("wobble", false);
+            }
         }
     }
 }

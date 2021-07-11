@@ -50,6 +50,8 @@ public class Player : SpoonListener
 		{
 			_instance = this;
 		}
+
+		anim = GetComponent<Animator>();
 	}
 
 	private void OnDestroy()
@@ -87,6 +89,16 @@ public class Player : SpoonListener
 	public bool canMove;
 
 	// Start is called before the first frame update
+
+	// [SerializeField]
+	private Animator anim;
+	private BoxCollider2D box;
+	[Range(0.01f, 1f)]
+	public float mAnimSpd;
+
+	GameObject hintText;
+	
+
 	void Start()
 	{
 		if (speedScalar == 0)
@@ -106,8 +118,11 @@ public class Player : SpoonListener
         {
 			TextManager.Instance.DisplayFixedText(Color.white, "Use Enter to dismiss text.", "Use WASD to move.");
 		}
+		hintText = transform.GetChild(0).gameObject;
+		box = GetComponent<BoxCollider2D>();
 	}
 
+	Vector3 yAxis = new Vector3(0, 1, 0);
 	// Update is called once per frame
 	void Update()
 	{
@@ -116,6 +131,17 @@ public class Player : SpoonListener
         {
 			Vector2 newPosition = new Vector2(transform.position.x + velocity.x * speedScalar, transform.position.y + velocity.y * speedScalar);
 			rb.MovePosition(newPosition);
+		}
+
+		anim.speed = velocity.magnitude / speedScalar * mAnimSpd;
+		transform.rotation = Quaternion.LookRotation(Vector3.forward, velocity);
+
+		if (hintText != null)
+		{
+			hintText.transform.rotation = Quaternion.identity;
+			if (transform.localScale.x != 0.0f)
+				hintText.transform.localScale = Vector3.one * (1.0f / transform.localScale.x);
+			hintText.transform.position = transform.position + yAxis * (box.bounds.size.y);
 		}
 	}
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4574882358167027438}
   - component: {fileID: 4574882358167027439}
   - component: {fileID: 4574882358167026960}
-  - component: {fileID: 3465704988554243701}
+  - component: {fileID: 7564625004783754486}
   m_Layer: 0
   m_Name: RedJamJar
   m_TagString: Untagged
@@ -116,7 +116,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
---- !u!114 &3465704988554243701
+--- !u!114 &7564625004783754486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,17 +130,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowGroup: 0
   m_HasRenderer: 1
-  m_UseRendererSilhouette: 0
+  m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
   m_ApplyToSortingLayers: 00000000
   m_ShapePath:
-  - {x: -0.22, y: -0.41, z: 0}
-  - {x: 0.21, y: -0.42, z: 0}
-  - {x: 0.39, y: 0, z: 0}
-  - {x: 0.28, y: 0.31, z: 0}
-  - {x: -0.32, y: 0.23, z: 0}
-  - {x: -0.35, y: 0, z: 0}
-  m_ShapePathHash: -754475154
+  - {x: -0.19, y: -0.44, z: 0}
+  - {x: 0.17, y: -0.44, z: 0}
+  - {x: 0.38, y: -0.21, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: -0.39, y: -0.21, z: 0}
+  m_ShapePathHash: -1907384066
   m_Mesh: {fileID: 0}
-  m_InstanceId: -118620
+  m_InstanceId: -32010
