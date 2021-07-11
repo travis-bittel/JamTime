@@ -68,7 +68,7 @@ MonoBehaviour:
   - {fileID: 8682747121555185525}
   StringsBanks:
   - {fileID: 2129144483695646682}
-  stringsBankWriteTime: 637615292170675312
+  stringsBankWriteTime: 637615303362220684
   cacheVersion: 6
 --- !u!114 &2129144483695646682
 MonoBehaviour:
@@ -85,7 +85,7 @@ MonoBehaviour:
   Path: JamminFMOD/jammin/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637615292170675312
+  lastModified: 637615303362220684
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -106,7 +106,7 @@ MonoBehaviour:
   Path: JamminFMOD/jammin/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637615292170670310
+  lastModified: 637615303362210678
   LoadResult: 0
   FileSizes: []
   Exists: 1
