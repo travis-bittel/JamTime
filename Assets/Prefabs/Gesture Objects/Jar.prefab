@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4270716570797007902}
   - component: {fileID: 4270716570797007901}
   - component: {fileID: 1954192119817512485}
+  - component: {fileID: 7609494133384752578}
   m_Layer: 0
   m_Name: Jar
   m_TagString: Untagged
@@ -140,3 +141,22 @@ CapsuleCollider2D:
   m_Offset: {x: -0.005220413, y: -0.054896295}
   m_Size: {x: 0.72974014, y: 0.8902074}
   m_Direction: 0
+--- !u!95 &7609494133384752578
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4270716570797007890}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b5a214c56fec5a449642355a8da66ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

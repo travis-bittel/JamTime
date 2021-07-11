@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9002568918049504454
+--- !u!114 &-6480130504380311608
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: event:/SFX/player_slurp
   guid: 8692b2f3bf216542b4cc8166100519ed
   Banks:
-  - {fileID: -3739691763394597156}
+  - {fileID: 1865781754891619649}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -23,7 +23,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 367
---- !u!114 &-7712630924912202933
+--- !u!114 &-6195394090944560063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,29 +44,6 @@ MonoBehaviour:
   - Name: Desktop
     Value: 802
   Exists: 1
---- !u!114 &-5709906423137581003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/player_clank
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/player_clank
-  guid: f18c3ddbb21d574c97711b60a44273a9
-  Banks:
-  - {fileID: -3739691763394597156}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 266
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,40 +57,19 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 2129144483695646682}
-  - {fileID: 8682747121555185525}
+  - {fileID: -6195394090944560063}
+  - {fileID: 1865781754891619649}
   EditorEvents:
-  - {fileID: 8852028536691030907}
-  - {fileID: -701408859242036626}
+  - {fileID: -6480130504380311608}
+  - {fileID: 7031488463802867592}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 8682747121555185525}
+  - {fileID: 1865781754891619649}
   StringsBanks:
-  - {fileID: 2129144483695646682}
-  stringsBankWriteTime: 637615303362220684
+  - {fileID: -6195394090944560063}
+  stringsBankWriteTime: 637615405673924770
   cacheVersion: 6
---- !u!114 &2129144483695646682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: JamminFMOD/jammin/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 637615303362220684
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 802
-  Exists: 1
---- !u!114 &8682747121555185525
+--- !u!114 &1865781754891619649
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,11 +84,11 @@ MonoBehaviour:
   Path: JamminFMOD/jammin/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637615303362210678
+  lastModified: 637615405673894777
   LoadResult: 0
   FileSizes: []
   Exists: 1
---- !u!114 &11400000
+--- !u!114 &7031488463802867592
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,19 +97,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/player_clank
   m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: -7712630924912202933}
-  - {fileID: -3739691763394597156}
-  EditorEvents:
-  - {fileID: -9002568918049504454}
-  - {fileID: -5709906423137581003}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: -3739691763394597156}
-  StringsBanks:
-  - {fileID: -7712630924912202933}
-  stringsBankWriteTime: 637615405673924770
-  cacheVersion: 6
+  Path: event:/SFX/player_clank
+  guid: f18c3ddbb21d574c97711b60a44273a9
+  Banks:
+  - {fileID: 1865781754891619649}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 266
