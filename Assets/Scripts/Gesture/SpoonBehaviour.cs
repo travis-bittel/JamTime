@@ -140,7 +140,7 @@ public class SpoonBehaviour : MonoBehaviour
                 )
             );
         Vector3 dm = mPos - mPosT;
-        if (dm.magnitude > 0)
+        if (dm.magnitude > 0 && Player.Instance.heldJamColor == VisionMode.DEFAULT)
         {
             idle = 0;
             rend.color = Color.white;

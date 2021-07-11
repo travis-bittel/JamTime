@@ -93,8 +93,8 @@ public class Player : SpoonListener
 	// [SerializeField]
 	private Animator anim;
 	private BoxCollider2D box;
-	[Range(0.01f, 1f)]
-	public float mAnimSpd;
+	//[Range(0.01f, 1f)]
+	float mAnimSpd = 0.5f;
 
 	GameObject hintText;
 	
