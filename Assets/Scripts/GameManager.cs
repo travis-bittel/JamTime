@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 	public string forest_ambience, background_music;
 	FMOD.Studio.EventInstance forest, bgm;
 
-	bool _music = false;
+	bool _music = true;
 	public bool music
     {
 		get {
