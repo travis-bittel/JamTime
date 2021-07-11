@@ -173,8 +173,11 @@ public class Player : SpoonListener
 
 	public void OnAdvanceText()
     {
+		if (TextManager.Instance.currentParagraph != null)
+		{
+			FMODUnity.RuntimeManager.PlayOneShot(general_interaction, transform.position);
+		}
 		TextManager.Instance.NextSentence();
-		FMODUnity.RuntimeManager.PlayOneShot(general_interaction, transform.position);
 	}
 
 	/*	public void OnCollisionEnter2D(Collision2D collision)
