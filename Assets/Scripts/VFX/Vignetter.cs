@@ -20,6 +20,9 @@ public class Vignetter : MonoBehaviour
     Vignette v;
     ChromaticAberration ca;
 
+    [Range(0, 1)]
+    public float intensity;
+
     [Range(0, 3)]
     public float duration;
 
@@ -60,12 +63,14 @@ public class Vignetter : MonoBehaviour
     {
         float t = 0.0f;
         Color cOrig = v.color.value;
+        bool clear = to.a == 0.0f;
         while (t < duration)
         {
             t += Time.deltaTime;
             float p = t / duration;
             v.color.value = CLerp(cOrig, to, p);
             ca.intensity.value = chromaLerp.Evaluate(p);
+            v.intensity.value = intensity * (clear ? lerp.Evaluate(1 - p) : lerp.Evaluate(p));
 
             yield return null;
         }

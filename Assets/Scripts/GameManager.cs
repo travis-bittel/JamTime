@@ -48,7 +48,18 @@ public class GameManager : MonoBehaviour
 		get { return _currentVisionMode; }
 		set
 		{
+			
 			_currentVisionMode = value;
+
+			if (value == VisionMode.DEFAULT) {
+				Vignetter.Instance.ToggleVignetteOff();
+			}
+			else
+			{
+				Debug.Log("vignette on");
+				Vignetter.Instance.ToggleVignetteOn();
+			}
+
 			if (currentRoom == null)
 			{
 				Debug.LogError("GameManager's currentRoom was null!");
