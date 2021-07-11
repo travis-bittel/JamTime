@@ -49,6 +49,9 @@ MonoBehaviour:
   currentRoom: {fileID: 0}
   queuedRoom: {fileID: 0}
   transitionTime: 0.2
+  forest_ambience: event:/MusicLoop/Forest
+  background_music: event:/MusicLoop/CalmLevelMusic
+  room_change_sfx: event:/SFX/generic
 --- !u!114 &4890778812917452905
 MonoBehaviour:
   m_ObjectHideFlags: 0

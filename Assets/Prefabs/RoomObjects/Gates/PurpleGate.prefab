@@ -100,6 +100,8 @@ MonoBehaviour:
   isOpen: 0
   closedSprite: {fileID: 21300000, guid: 8f5c884e7a2f2e449a0b3bccf56c5ce4, type: 3}
   openSprite: {fileID: 21300000, guid: 7e0c6564b2cb187419d4098fd6f3421f, type: 3}
+  open_sfx: event:/SFX/generic
+  close_sfx: event:/SFX/generic
 --- !u!61 &8672033904627048863
 BoxCollider2D:
   m_ObjectHideFlags: 0

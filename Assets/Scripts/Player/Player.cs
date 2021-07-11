@@ -152,50 +152,60 @@ public class Player : SpoonListener
 		velocity = new Vector3(moveDir.x, moveDir.y, 0);
 		direction = GetFacingDirectionFromVelocity();
 	}
+
+	[FMODUnity.EventRef]
+	public string general_interaction;
+
 	public void OnInteract()
     {
 		if (currentInteractableObject != null)
         {
 			currentInteractableObject.OnInteract();
-        }
+			//FMODUnity.RuntimeManager.PlayOneShot(general_interaction, transform.position);
+		}
 	}
+
 
 	public void OnAdvanceText()
     {
 		TextManager.Instance.NextSentence();
-    }
+		FMODUnity.RuntimeManager.PlayOneShot(general_interaction, transform.position);
+	}
 
-/*	public void OnCollisionEnter2D(Collision2D collision)
-	{
-		// If colliding with another room.
-		GameObject other = collision.gameObject;
-		if (other.CompareTag("Room"))
+	/*	public void OnCollisionEnter2D(Collision2D collision)
 		{
-			GameManager.Instance.queuedRoom = other.GetComponent<Room>();
-		}
-	}*/
-
-/*	public void OnCollisionExit2D(Collision2D collision)
-	{
-		GameManager gm = GameManager.Instance;
-		// If colliding with another room...
-		GameObject other = collision.gameObject;
-		if (other.CompareTag("Room"))
-		{
-			Room nextRoom = other.GetComponent<Room>();
-			if (nextRoom == gm.queuedRoom)
+			// If colliding with another room.
+			GameObject other = collision.gameObject;
+			if (other.CompareTag("Room"))
 			{
-				gm.roomChangeEnd(nextRoom);
+				GameManager.Instance.queuedRoom = other.GetComponent<Room>();
 			}
-			gm.changeRooms();
-		}
-	}*/
+		}*/
 
+	/*	public void OnCollisionExit2D(Collision2D collision)
+		{
+			GameManager gm = GameManager.Instance;
+			// If colliding with another room...
+			GameObject other = collision.gameObject;
+			if (other.CompareTag("Room"))
+			{
+				Room nextRoom = other.GetComponent<Room>();
+				if (nextRoom == gm.queuedRoom)
+				{
+					gm.roomChangeEnd(nextRoom);
+				}
+				gm.changeRooms();
+			}
+		}*/
+
+	[FMODUnity.EventRef]
+	public string vision_on, vision_off;
 	public void OnToggleVisionModeOn()
     {
 		GameManager.Instance.CurrentVisionMode = heldJamColor;
 		heldJamColor = VisionMode.DEFAULT; // Remove jam jar whenever the player uses any amount of jam
 		StartCoroutine(OnToggleVisionModeOff());
+		FMODUnity.RuntimeManager.PlayOneShot(vision_on);
 	}
 
 	IEnumerator OnToggleVisionModeOff()
@@ -203,6 +213,7 @@ public class Player : SpoonListener
 		Debug.Log("jam vision effect will last for " + (SpoonBehaviour.Instance.jam * 5) + " seconds");
 		yield return new WaitForSeconds(SpoonBehaviour.Instance.jam * 5);
 		GameManager.Instance.CurrentVisionMode = VisionMode.DEFAULT;
+		FMODUnity.RuntimeManager.PlayOneShot(vision_off);
 	}
 
 	public void OnToggleVisionMode()
@@ -283,4 +294,12 @@ public class Player : SpoonListener
 			gm.changeRooms();
 		}
 	}
+
+	[FMODUnity.EventRef]
+	public string footstep;
+
+	public void PlayFootStep()
+    {
+		FMODUnity.RuntimeManager.PlayOneShot(footstep, transform.position);
+    }
 }

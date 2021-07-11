@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Gate : RoomObject
 {
@@ -11,8 +12,12 @@ public class Gate : RoomObject
     [SerializeField]
     private Sprite openSprite;
 
+    [FMODUnity.EventRef]
+    public string open_sfx, close_sfx;
+
     public void SetOpenState(bool open)
     {
+        FMODUnity.RuntimeManager.PlayOneShot(open ? open_sfx : close_sfx, transform.position);
         isOpen = open;
         if (spriteRenderer == null)
         {

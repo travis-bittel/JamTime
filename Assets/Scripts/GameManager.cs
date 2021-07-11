@@ -43,6 +43,28 @@ public class GameManager : MonoBehaviour
 
 	public float transitionTime = 2.0f;
 	private float currentTransitionTime;
+
+	[FMODUnity.EventRef]
+	public string forest_ambience, background_music;
+	FMOD.Studio.EventInstance forest, bgm;
+
+	bool _music = false;
+	public bool music
+    {
+		get {
+			return _music;
+		}
+        set
+        {
+			if (_music != value && bgm.isValid())
+            {
+				_music = value;
+				if (_music) { bgm.start(); }
+				else { bgm.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); }
+            }
+        }
+    }
+
 	public VisionMode CurrentVisionMode
 	{
 		get { return _currentVisionMode; }
@@ -77,9 +99,22 @@ public class GameManager : MonoBehaviour
 		movingCamera = false;
 		CameraScript cs = Camera.main.GetComponent<CameraScript>();
 		cs.moveToPosition(currentRoom.transform.position);
+
+		// play music + ambience
+		bgm = FMODUnity.RuntimeManager.CreateInstance(background_music);
+		forest = FMODUnity.RuntimeManager.CreateInstance(forest_ambience);
+
+		if (forest.isValid()) { forest.start(); }
+		if (music && bgm.isValid()) { bgm.start(); }
 	}
 
-	private void Update()
+    private void OnDisable()
+    {
+		if (forest.isValid()) { forest.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); }
+		if (bgm.isValid()) { bgm.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); }
+	}
+
+    private void Update()
 	{
 		if (movingCamera)
 		{
@@ -98,12 +133,16 @@ public class GameManager : MonoBehaviour
 		roomChangeStart(queuedRoom);
 	}
 
+	[FMODUnity.EventRef]
+	public string room_change_sfx;
+
 	public void roomChangeStart(Room nextRoom)
 	{
 		movingCamera = true;
 		currentTransitionTime = 0.0f;
 		cameraStart = Camera.main.transform.position;
 		cameraEnd = nextRoom.transform.position;
+		FMODUnity.RuntimeManager.PlayOneShot(room_change_sfx);
 		Debug.Log("Going from" + cameraStart.ToString() + " to " + cameraEnd.ToString());
 	}
 
