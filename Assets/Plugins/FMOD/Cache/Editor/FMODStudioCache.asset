@@ -91,7 +91,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 1625
+  Length: 1098
 --- !u!114 &-6740649606584234028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,11 +176,11 @@ MonoBehaviour:
   Path: JamminFMOD/jammin/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637616065790318092
+  lastModified: 637616079353708697
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1332
+    Value: 1378
   Exists: 1
 --- !u!114 &-5501902963700179923
 MonoBehaviour:
@@ -258,13 +258,37 @@ MonoBehaviour:
   - {fileID: 1600682313023263602}
   - {fileID: -8048143712962243155}
   - {fileID: -7436717664937823289}
+  - {fileID: 1122112262514919928}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1865781754891619649}
   StringsBanks:
   - {fileID: -6195394090944560063}
-  stringsBankWriteTime: 637616065790318092
+  stringsBankWriteTime: 637616079353708697
   cacheVersion: 6
+--- !u!114 &1122112262514919928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/vOff
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/vOff
+  guid: 1a4913ebf1b9f549b4d373f4a06bc9db
+  Banks:
+  - {fileID: 1865781754891619649}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1046
 --- !u!114 &1600682313023263602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,7 +327,7 @@ MonoBehaviour:
   Path: JamminFMOD/jammin/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637616065790258132
+  lastModified: 637616079353648739
   LoadResult: 0
   FileSizes: []
   Exists: 1
