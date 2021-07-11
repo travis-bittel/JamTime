@@ -262,7 +262,7 @@ public class Player : SpoonListener
 		if (other.CompareTag("FinalJam"))
 		{
 			CanvasScript Screen = CanvasScript.Instance;
-			Screen.nextScene = "ChangeSceneTest";
+			Screen.nextScene = "CreditScene";
 			Screen.ready = true;
 			Screen.OnAdvanceText();
 		}
