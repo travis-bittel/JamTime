@@ -43,6 +43,30 @@ public class GameManager : MonoBehaviour
 
 	public float transitionTime = 2.0f;
 	private float currentTransitionTime;
+
+	[FMODUnity.EventRef]
+	public string forest_ambience, background_music;
+	FMOD.Studio.EventInstance forest, bgm;
+
+	[Range(0, 1)]
+	public float music_level;
+	bool _music = true;
+	public bool music
+    {
+		get {
+			return _music;
+		}
+        set
+        {
+			if (_music != value && bgm.isValid())
+            {
+				_music = value;
+				if (_music) { bgm.start(); bgm.setVolume(music_level); }
+				else { bgm.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); }
+            }
+        }
+    }
+
 	public VisionMode CurrentVisionMode
 	{
 		get { return _currentVisionMode; }
@@ -77,14 +101,33 @@ public class GameManager : MonoBehaviour
 		movingCamera = false;
 		CameraScript cs = Camera.main.GetComponent<CameraScript>();
 		cs.moveToPosition(currentRoom.transform.position);
+
+		// play music + ambience
+		bgm = FMODUnity.RuntimeManager.CreateInstance(background_music);
+		forest = FMODUnity.RuntimeManager.CreateInstance(forest_ambience);
+
+		if (forest.isValid()) { forest.start(); }
+		music = true;
 	}
 
-	private void Update()
+    private void OnDisable()
+    {
+		if (forest.isValid()) { forest.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); }
+		music = false;
+	}
+
+    private void Update()
 	{
 		if (movingCamera)
 		{
 			roomChangeStep();
 		}
+
+		if (forest.isValid())
+        {
+			forest.setVolume(Mathf.PerlinNoise(Time.deltaTime / 7.0f, 0));
+			// forest.setProperty()
+        }
 	}
 
 	public void changeRooms()
@@ -98,12 +141,16 @@ public class GameManager : MonoBehaviour
 		roomChangeStart(queuedRoom);
 	}
 
+	[FMODUnity.EventRef]
+	public string room_change_sfx;
+
 	public void roomChangeStart(Room nextRoom)
 	{
 		movingCamera = true;
 		currentTransitionTime = 0.0f;
 		cameraStart = Camera.main.transform.position;
 		cameraEnd = nextRoom.transform.position;
+		FMODUnity.RuntimeManager.PlayOneShot(room_change_sfx);
 		Debug.Log("Going from" + cameraStart.ToString() + " to " + cameraEnd.ToString());
 	}
 

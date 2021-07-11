@@ -12,6 +12,9 @@ public class Bug : SpoonListener
     [SerializeField]
     private SpriteRenderer spriteRenderer;
 
+    [FMODUnity.EventRef]
+    public string spawn, eat, interact;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -51,7 +54,11 @@ public class Bug : SpoonListener
 		if (other.CompareTag("Player"))
 		{
             strategy.OnPlayerContact(this);
-		}
+            if (Player.Instance.heldJamColor != VisionMode.DEFAULT)
+                FMODUnity.RuntimeManager.PlayOneShot(eat, transform.position);
+            else
+                FMODUnity.RuntimeManager.PlayOneShot(interact, transform.position);
+        }
     }
 
 	private void OnCollisionStay2D(Collision2D collision)
@@ -61,6 +68,7 @@ public class Bug : SpoonListener
         if (other.GetComponent<Hive>() != null) // Is a hive.
         {
             strategy.OnHiveContact(this);
+            FMODUnity.RuntimeManager.PlayOneShot(spawn, transform.position);
         }
     }
 }

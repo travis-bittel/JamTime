@@ -116,6 +116,9 @@ public class SpoonBehaviour : MonoBehaviour
         dirLog = new List<Vector3>();
         dirLog.Add(Vector3.zero);
         lastPos = transform.position;
+
+        Cursor.visible = false;
+        idle = 0.0f;
     }
 
     int measureSeg = 1; // frames per measurement of mouse
@@ -124,6 +127,7 @@ public class SpoonBehaviour : MonoBehaviour
 
     int jColUpdateSeg = 3;
     Vector3 lastPos = Vector3.zero;
+    float idle;
     void Update()
     {
         // calculate mouse position per frame
@@ -136,6 +140,18 @@ public class SpoonBehaviour : MonoBehaviour
                 )
             );
         Vector3 dm = mPos - mPosT;
+        if (dm.magnitude > 0)
+        {
+            idle = 0;
+            rend.color = Color.white;
+        } else
+        {
+            idle += Time.deltaTime;
+            if (idle > 3)
+            {
+                rend.color = Color.clear;
+            }
+        }
 
         // spoon follow mouse
         transform.position = mPos;
