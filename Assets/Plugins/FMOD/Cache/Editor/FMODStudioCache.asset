@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8300008459922028983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MusicLoop/Forest
+  m_EditorClassIdentifier: 
+  Path: event:/MusicLoop/Forest
+  guid: 802263a56105d048bb40138ce1c90a90
+  Banks:
+  - {fileID: 1865781754891619649}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &-6480130504380311608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23,6 +46,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 367
+--- !u!114 &-6332796421205170901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MusicLoop/CalmLevelMusic
+  m_EditorClassIdentifier: 
+  Path: event:/MusicLoop/CalmLevelMusic
+  guid: 23f8698f10b7134e9c6303641bc99cf6
+  Banks:
+  - {fileID: 1865781754891619649}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 120000
 --- !u!114 &-6195394090944560063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38,11 +84,11 @@ MonoBehaviour:
   Path: JamminFMOD/jammin/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637615405673924770
+  lastModified: 637615969854726922
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 802
+    Value: 968
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -62,12 +108,15 @@ MonoBehaviour:
   EditorEvents:
   - {fileID: -6480130504380311608}
   - {fileID: 7031488463802867592}
+  - {fileID: -6332796421205170901}
+  - {fileID: 4427186239021685172}
+  - {fileID: -8300008459922028983}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1865781754891619649}
   StringsBanks:
   - {fileID: -6195394090944560063}
-  stringsBankWriteTime: 637615405673924770
+  stringsBankWriteTime: 637615969854726922
   cacheVersion: 6
 --- !u!114 &1865781754891619649
 MonoBehaviour:
@@ -84,10 +133,33 @@ MonoBehaviour:
   Path: JamminFMOD/jammin/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637615405673894777
+  lastModified: 637615969854686950
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &4427186239021685172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/generic
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/generic
+  guid: 6a6e1328e12de2419c9301fe26fa0c9f
+  Banks:
+  - {fileID: 1865781754891619649}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 78
 --- !u!114 &7031488463802867592
 MonoBehaviour:
   m_ObjectHideFlags: 0
