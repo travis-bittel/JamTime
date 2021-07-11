@@ -51,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 4615109099841237716}
   - component: {fileID: 4615109099841237715}
   - component: {fileID: 3468909907161436278}
+  - component: {fileID: 925102024}
   m_Layer: 0
   m_Name: Spoon
   m_TagString: Gesture
@@ -176,7 +177,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -264,6 +265,43 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &925102024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4615109099841237711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: 0.47140956, y: -0.32587725, z: 0}
+  - {x: 0.57299507, y: -0.36970913, z: 0}
+  - {x: 0.62700343, y: -0.3668666, z: 0}
+  - {x: 0.6417297, y: -0.3196814, z: 0}
+  - {x: 0.46497846, y: -0.23895214, z: 0}
+  - {x: 0.11250293, y: -0.05702933, z: 0}
+  - {x: 0.10966039, y: 0.014034241, z: 0}
+  - {x: 0.04428196, y: 0.07088512, z: 0}
+  - {x: -0.09203136, y: 0.09801088, z: 0}
+  - {x: -0.118023396, y: 0.08180903, z: 0}
+  - {x: -0.1092155, y: 0.022561878, z: 0}
+  - {x: -0.046679497, y: -0.05987189, z: 0}
+  - {x: 0.030069232, y: -0.091139875, z: 0}
+  - {x: 0.11534548, y: -0.076927155, z: 0}
+  - {x: 0.30295336, y: -0.18778636, z: 0}
+  m_ShapePathHash: 2102900059
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -44684
 --- !u!1 &4615109099861870899
 GameObject:
   m_ObjectHideFlags: 0
