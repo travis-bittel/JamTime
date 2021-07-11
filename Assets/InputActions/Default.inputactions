@@ -22,14 +22,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "ToggleVisionMode",
-                    "type": "Button",
-                    "id": "1c0d1082-3441-4ed8-af4f-c0fa0fbf784e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "AdvanceText",
                     "type": "Button",
                     "id": "68f8ea68-7040-4728-826a-9498bb32b359",
@@ -179,17 +171,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ba956bf4-bd01-4e85-940f-730cca85ae19",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ToggleVisionMode",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
