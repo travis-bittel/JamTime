@@ -6,12 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/ChangeSceneTest.unity
-    guid: de6db4ac530c19446b806d8783348d8c
+    path: Assets/Scenes/StartScreen.unity
+    guid: d78b9f81e23d2204db19abc1db83dcf5
   - enabled: 1
     path: Assets/Scenes/MERGING.unity
     guid: ee80bc49d830afe489376e9de2091bb2
+  - enabled: 1
+    path: Assets/Scenes/CreditScene.unity
+    guid: b622f63f9dba61b4c85e51fdbba3b6e4
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/Scenes/ChangeSceneTest.unity
+    guid: de6db4ac530c19446b806d8783348d8c
   m_configObjects: {}
