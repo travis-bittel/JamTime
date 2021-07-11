@@ -71,11 +71,16 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+################################################
 # Modifications for our VGDev Game Jam
+################################################
+
+# Discard anything Unity calls a log.
 */[Ll]ogs/*
 
 # FMOD
 /Assets/FMODStudioCache.asset
 /Assets/FMODStudioCache.asset.meta
+*Assets/Plugins/FMOD/Cache/*
 fmod.log
 fmod_editor.log
