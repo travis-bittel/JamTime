@@ -180,6 +180,11 @@ public class Player : SpoonListener
 		TextManager.Instance.NextSentence();
 	}
 
+	public void OnCloseGame()
+    {
+		Application.Quit();
+    }
+
 	/*	public void OnCollisionEnter2D(Collision2D collision)
 		{
 			// If colliding with another room.
