@@ -46,24 +46,38 @@ public class Gate : RoomObject
 
     public override void UpdateVisibility()
     {
-        _isVisible = !isOpen && visibleVisionModes.Contains(GameManager.Instance.CurrentVisionMode);
+        _isVisible = visibleVisionModes.Contains(GameManager.Instance.CurrentVisionMode);
 
         if (spriteRenderer == null)
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.enabled = _isVisible;
-        }
-
         if (col == null)
         {
             col = GetComponent<Collider2D>();
         }
-        if (col != null)
+
+        if (spriteRenderer != null && col != null)
         {
-            col.enabled = _isVisible;
+            if (_isVisible)
+            {
+                spriteRenderer.enabled = true;
+
+                if (isOpen)
+                {
+                    spriteRenderer.sprite = openSprite;
+                    col.enabled = false;
+                }
+                else
+                {
+                    spriteRenderer.sprite = closedSprite;
+                    col.enabled = true;
+                }
+            } else
+            {
+                spriteRenderer.enabled = false;
+                col.enabled = false;
+            }
         }
     }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{539ddecd-dd3f-4a60-b50c-449e2d70cc4e}">
+		<property name="assetPath">
+			<value>Samantha_Dolman, Insects Eating.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.0781405895691609</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6c95e610-443a-4374-b79e-5eca5f9e0054}</destination>
+		</relationship>
+	</object>
+</objects>
