@@ -20,7 +20,13 @@ public class Gate : RoomObject
         }
         if (spriteRenderer != null)
         {
-            spriteRenderer.enabled = !isOpen;
+            if (isOpen)
+            {
+                spriteRenderer.sprite = openSprite;
+            } else
+            {
+                spriteRenderer.sprite = closedSprite;
+            }
         }
 
         if (col == null)
