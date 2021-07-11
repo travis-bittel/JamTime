@@ -139,8 +139,8 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 1883324695686896963}
   m_RenderPostProcessing: 1
   m_Antialiasing: 2
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
+  m_AntialiasingQuality: 1
+  m_StopNaN: 1
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
@@ -238,15 +238,15 @@ MonoBehaviour:
     - serializedVersion: 3
       time: -0.0051956177
       value: -0.009426117
-      inSlope: 0.3830602
-      outSlope: 0.3830602
+      inSlope: 0.43127
+      outSlope: 0.43127
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.15479016
-      value: 0.051858068
+      time: 0.18120313
+      value: 0.07096207
       inSlope: 0.20183472
       outSlope: 0.20183472
       tangentMode: 0
@@ -256,8 +256,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1.0114136
       value: 0
-      inSlope: -0.060537767
-      outSlope: -0.060537767
+      inSlope: -0.0854748
+      outSlope: -0.0854748
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334

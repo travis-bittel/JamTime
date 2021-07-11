@@ -52,13 +52,13 @@ MonoBehaviour:
   m_LightVolumeOpacity: 0.242
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
-  m_UseNormalMap: 0
+  m_UseNormalMap: 1
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
   m_ShadowIntensity: 0.759
   m_ShadowVolumeIntensity: 0
-  m_PointLightInnerAngle: 16
-  m_PointLightOuterAngle: 67.14
+  m_PointLightInnerAngle: 0
+  m_PointLightOuterAngle: 268
   m_PointLightInnerRadius: 1.1
   m_PointLightOuterRadius: 2.72
   m_PointLightDistance: 3
@@ -85,4 +85,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede6edff55e1c1e45aa405b9b01136f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deviation: 0.1
+  deviation: 0.125
