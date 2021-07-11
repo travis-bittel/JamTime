@@ -136,7 +136,7 @@ MonoBehaviour:
   failure_sfx: event:/SFX/player_clank
   target: {fileID: 0}
   home: {fileID: 0}
-  speed: 0.015
+  speed: 10
   spriteRenderer: {fileID: 0}
   spawn: event:/SFX/bInt
   eat: event:/SFX/bEat

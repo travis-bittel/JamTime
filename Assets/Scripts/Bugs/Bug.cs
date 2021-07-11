@@ -37,7 +37,7 @@ public class Bug : SpoonListener
     private void step()
 	{
         Vector3 movement = (target.position - transform.position);
-        movement = movement.normalized * speed;
+        movement = movement.normalized * speed * Time.deltaTime;
         if (movement.x >= 0)
         {
             spriteRenderer.flipY = true;
