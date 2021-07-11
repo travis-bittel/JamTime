@@ -252,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5840968229222459547, guid: 236d4d45a7e28224c9cdb0ddf5f4ac6e, type: 3}
       propertyPath: nextScene
-      value: MERGING
+      value: StartScreen
       objectReference: {fileID: 0}
     - target: {fileID: 148109149, guid: 236d4d45a7e28224c9cdb0ddf5f4ac6e, type: 3}
       propertyPath: m_Color.b
