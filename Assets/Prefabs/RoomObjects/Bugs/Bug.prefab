@@ -132,8 +132,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   jamAmount: 0
-  success_sfx: event:/SFX/generic
-  failure_sfx: event:/SFX/generic
+  success_sfx: event:/SFX/player_slurp
+  failure_sfx: event:/SFX/player_clank
   target: {fileID: 0}
   home: {fileID: 0}
   speed: 0.015

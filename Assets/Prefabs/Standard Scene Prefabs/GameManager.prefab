@@ -51,6 +51,7 @@ MonoBehaviour:
   transitionTime: 0.2
   forest_ambience: event:/MusicLoop/Forest
   background_music: event:/MusicLoop/CalmLevelMusic
+  music_level: 0.39
   room_change_sfx: event:/SFX/generic
 --- !u!114 &4890778812917452905
 MonoBehaviour:

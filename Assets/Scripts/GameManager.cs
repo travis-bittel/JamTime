@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
 	public string forest_ambience, background_music;
 	FMOD.Studio.EventInstance forest, bgm;
 
+	[Range(0, 1)]
+	public float music_level;
 	bool _music = true;
 	public bool music
     {
@@ -59,7 +61,7 @@ public class GameManager : MonoBehaviour
 			if (_music != value && bgm.isValid())
             {
 				_music = value;
-				if (_music) { bgm.start(); }
+				if (_music) { bgm.start(); bgm.setVolume(music_level); }
 				else { bgm.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); }
             }
         }
@@ -105,13 +107,13 @@ public class GameManager : MonoBehaviour
 		forest = FMODUnity.RuntimeManager.CreateInstance(forest_ambience);
 
 		if (forest.isValid()) { forest.start(); }
-		if (music && bgm.isValid()) { bgm.start(); }
+		music = true;
 	}
 
     private void OnDisable()
     {
 		if (forest.isValid()) { forest.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); }
-		if (bgm.isValid()) { bgm.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); }
+		music = false;
 	}
 
     private void Update()
@@ -120,6 +122,12 @@ public class GameManager : MonoBehaviour
 		{
 			roomChangeStep();
 		}
+
+		if (forest.isValid())
+        {
+			forest.setVolume(Mathf.PerlinNoise(Time.deltaTime / 7.0f, 0));
+			// forest.setProperty()
+        }
 	}
 
 	public void changeRooms()
