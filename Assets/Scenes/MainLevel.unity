@@ -578,19 +578,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869420, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_Size.x
-      value: 3.1389585
+      value: 5.158168
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869420, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_Size.y
-      value: 2.9820194
+      value: 2.7583127
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869420, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_Offset.x
-      value: -1.0694797
+      value: -1.1305159
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869420, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_Offset.y
-      value: 0.9910097
+      value: 0.87915635
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869421, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_RootOrder
@@ -598,7 +598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869421, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.05187412
+      value: 0.031898435
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869421, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_LocalScale.y
@@ -610,7 +610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869421, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1597
+      value: -0.14971
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869421, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_LocalPosition.y
@@ -650,15 +650,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869422, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: text
-      value: 
+      value: Bugs will steal your carried jam when you move near their hive.
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869422, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: isFixedText
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869422, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: fixedTextParagraph.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869422, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: fixedTextParagraph.Array.data[0]
@@ -3157,7 +3157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869421, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.05187412
+      value: 0.11450849
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869421, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_LocalScale.y
@@ -3169,7 +3169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869421, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0513
+      value: 0.08112
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869421, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6486,19 +6486,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869422, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: fixedTextParagraph.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869422, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: fixedTextParagraph.Array.data[0]
-      value: Press E near a Jam Jar to pick up jam.
+      value: Move near a jam jar to collect jam. You will then see an icon in the
+        bottom left.
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869422, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: fixedTextParagraph.Array.data[1]
-      value: While carrying jam, press Shift to change how you view the world.
+      value: Move your cursor into the jam jar icon in the bottom left and swirl
+        it around to pick up jam.
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869422, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: fixedTextParagraph.Array.data[2]
-      value: Each variety of jam reveals different colors of objects.
+      value: Then move it towards the player to eat it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 920727979699869422, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
+      propertyPath: fixedTextParagraph.Array.data[3]
+      value: This will grant you special vision of objects in the world for a short
+        duration.
+      objectReference: {fileID: 0}
+    - target: {fileID: 920727979699869422, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
+      propertyPath: fixedTextParagraph.Array.data[4]
+      value: The duration increases with the amount of jam you put onto the spoon.
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869423, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_Enabled
@@ -6595,7 +6606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869421, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.11111112
+      value: 0.20341428
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869421, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_LocalScale.z
@@ -6603,11 +6614,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869421, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.275625
+      value: 0.3037
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869421, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.33222225
+      value: -0.3302
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869421, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6927,6 +6938,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTrigger (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 920727979699869420, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
+      propertyPath: m_Size.x
+      value: 1.3426161
+      objectReference: {fileID: 0}
+    - target: {fileID: 920727979699869420, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
+      propertyPath: m_Size.y
+      value: 1.6167085
+      objectReference: {fileID: 0}
+    - target: {fileID: 920727979699869420, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.17130801
+      objectReference: {fileID: 0}
+    - target: {fileID: 920727979699869420, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.115632415
+      objectReference: {fileID: 0}
     - target: {fileID: 920727979699869421, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -6985,7 +7012,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869422, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: text
-      value: Walls will only block your way when you are in the same color mode.
+      value: Walls will only block your way when you are in the same color vision
+        mode.
       objectReference: {fileID: 0}
     - target: {fileID: 920727979699869422, guid: 07416b7d4a0472946ab96e30d7572252, type: 3}
       propertyPath: fixedTextParagraph.Array.size
@@ -7369,7 +7397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7522461485288092965, guid: 3d56cc7adc44c9346870cb4eb6685961, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d56cc7adc44c9346870cb4eb6685961, type: 3}
