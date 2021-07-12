@@ -24,14 +24,6 @@ public enum PlayerState
 	OTHER
 }
 
-public enum VisionMode
-{
-	DEFAULT,
-	RED,
-	YELLOW,
-	PURPLE
-}
-
 public class Player : SpoonListener
 {
 	#region Singleton Code
@@ -60,7 +52,6 @@ public class Player : SpoonListener
 	}
 	#endregion
 
-	public PlayerFacing direction;
 	public PlayerState state = PlayerState.IDLE;
 	public float speedScalar;
 	public Vector3 velocity;
@@ -97,6 +88,12 @@ public class Player : SpoonListener
 	public float mAnimSpd;
 
 	GameObject hintText;
+
+	private float _remainingVisionDuration;
+	public float RemainingVisionDuration
+    {
+		get { return _remainingVisionDuration; }
+    }
 	
 
 	void Start()
@@ -105,7 +102,6 @@ public class Player : SpoonListener
         {
 			Debug.LogWarning("Speed was set to 0, defaulting to 0.05");
         }
-		direction = PlayerFacing.DOWN;
 		state = PlayerState.IDLE;
 		velocity = new Vector3(0, 0, 0);
 
@@ -136,9 +132,7 @@ public class Player : SpoonListener
 		else
         {
 			anim.speed = 0;
-        }
-
-		transform.rotation = Quaternion.LookRotation(Vector3.forward, velocity);
+		}
 
 		if (hintText != null)
 		{
@@ -152,9 +146,20 @@ public class Player : SpoonListener
 	// Happens onPress and Release.
 	public void OnMove(InputValue value)
 	{
-		Vector2 moveDir = value.Get<Vector2>();
-		velocity = new Vector3(moveDir.x, moveDir.y, 0);
-		direction = GetFacingDirectionFromVelocity();
+		if (canMove)
+        {
+			Vector2 moveDir = value.Get<Vector2>();
+			velocity = new Vector3(moveDir.x, moveDir.y, 0);
+
+			// We only want to change directions when the player has input a direction (ie. not when the button is released)
+			if (velocity != Vector3.zero)
+            {
+				SetFacingDirectionFromVelocity();
+			}
+		} else
+        {
+			velocity = Vector3.zero;
+        }
 	}
 
 	[FMODUnity.EventRef]
@@ -191,14 +196,26 @@ public class Player : SpoonListener
     {
 		GameManager.Instance.CurrentVisionMode = heldJamColor;
 		heldJamColor = VisionMode.DEFAULT; // Remove jam jar whenever the player uses any amount of jam
+		if (VisionDisplayHandler.Instance == null)
+        {
+			Debug.LogError("AAAA");
+        }
+		VisionDisplayHandler.Instance.UpdateFillColor();
 		StartCoroutine(OnToggleVisionModeOff());
 		FMODUnity.RuntimeManager.PlayOneShot(vision_on);
 	}
 
 	IEnumerator OnToggleVisionModeOff()
     {
-		Debug.Log("jam vision effect will last for " + (SpoonBehaviour.Instance.jam * 5) + " seconds");
-		yield return new WaitForSeconds(SpoonBehaviour.Instance.jam * 5);
+		_remainingVisionDuration = SpoonBehaviour.Instance.jam * 5;
+		Debug.Log("jam vision effect will last for " + _remainingVisionDuration + " seconds");
+		while (_remainingVisionDuration > 0)
+        {
+			_remainingVisionDuration -= Time.deltaTime;
+			yield return null;
+		}
+		//yield return new WaitForSeconds(SpoonBehaviour.Instance.jam * 5);
+		_remainingVisionDuration = 0;
 		GameManager.Instance.CurrentVisionMode = VisionMode.DEFAULT;
 		FMODUnity.RuntimeManager.PlayOneShot(vision_off);
 	}
@@ -214,30 +231,32 @@ public class Player : SpoonListener
 		}
     }
 
-	private PlayerFacing GetFacingDirectionFromVelocity()
-    {
-		if (velocity.x > 0)
-        {
-			return PlayerFacing.RIGHT;
-        } else if (velocity.x < 0)
-        {
-			return PlayerFacing.LEFT;
-		} else if (velocity.y > 0)
-        {
-			return PlayerFacing.UP;
-		} else
-        {
-			return PlayerFacing.DOWN;
+	private void SetFacingDirectionFromVelocity()
+	{
+		if (velocity.x < 0)
+		{
+			transform.rotation = Quaternion.Euler(0, 0, 90);
 		}
-    }
+		else if (velocity.x > 0)
+		{
+			transform.rotation = Quaternion.Euler(0, 0, 270);
+		}
+		else if (velocity.y > 0)
+		{
+			transform.rotation = Quaternion.Euler(0, 0, 0);
+		}
+		else
+		{
+			transform.rotation = Quaternion.Euler(0, 0, 180);
+		}
+	}
 
-    private void OnTriggerEnter2D(Collider2D collision)
+	private void OnTriggerEnter2D(Collider2D collision)
     {
 		// for spoon collision
 		if (HandleSpoonCollision(collision)) {
 			return;
         }
-		////
 
 		InteractableObject obj = collision.gameObject.GetComponent<InteractableObject>();
 		if (obj != null)

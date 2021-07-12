@@ -183,4 +183,33 @@ public class GameManager : MonoBehaviour
 		currentRoom.UpdateRoomObjectVisibility();
 	}
 
+
+	public static Color ConvertVisionModeToColor(VisionMode mode)
+    {
+		switch (mode)
+        {
+			case VisionMode.RED:
+				return Color.red;
+			case VisionMode.YELLOW:
+				return Color.yellow;
+			case VisionMode.PURPLE:
+				return Color.magenta;
+			default:
+				return Color.gray;
+		}
+    }
+
+	public static Color GetColorFromCurrentVisionMode()
+	{
+		return ConvertVisionModeToColor(Instance._currentVisionMode);
+	}
+
+}
+
+public enum VisionMode
+{
+	DEFAULT,
+	RED,
+	YELLOW,
+	PURPLE
 }
