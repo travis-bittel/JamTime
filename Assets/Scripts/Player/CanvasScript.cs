@@ -24,8 +24,8 @@ public class CanvasScript : MonoBehaviour
 		else
 		{
 			_instance = this;
-			SceneTransitionOverlay = GetComponent<RawImage>();
-			SceneTransitionOverlay.CrossFadeAlpha(0.0f, SceneTransitionTime / 2, false);
+			//transitionOverlayImage = GetComponent<RawImage>();
+			transitionOverlayImage.CrossFadeAlpha(0.0f, SceneTransitionTime / 2, false);
 		}
 	}
 
@@ -36,7 +36,9 @@ public class CanvasScript : MonoBehaviour
 	#endregion
 
 	private bool changingScene;
-	private RawImage SceneTransitionOverlay;
+
+	[SerializeField]
+	private RawImage transitionOverlayImage;
 	public float SceneTransitionTime = 2.0f;
 	private float transitionProgress;
 	public String nextScene;
@@ -68,7 +70,7 @@ public class CanvasScript : MonoBehaviour
 	}
 	public void SceneChange(String nextScene)
 	{
-		SceneTransitionOverlay.CrossFadeAlpha(1.0f, SceneTransitionTime / 2, false);
+		transitionOverlayImage.CrossFadeAlpha(1.0f, SceneTransitionTime / 2, false);
 		changingScene = true;
 		transitionProgress = 0.0f;
 		this.nextScene = nextScene;
