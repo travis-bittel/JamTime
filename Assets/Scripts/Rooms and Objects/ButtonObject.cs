@@ -10,6 +10,7 @@ public class ButtonObject : InteractableObject
 
     public override void OnInteract()
     {
+        int index = 0;
         foreach (ButtonObjectInteraction interaction in buttonInteractions)
         {
             switch (interaction.actionType)
@@ -44,6 +45,15 @@ public class ButtonObject : InteractableObject
                     }
                     break;
             }
+            // Set the line if this is the first gate interacted with, otherwise add it to the lineRenderer
+            if (index == 0)
+            {
+                Player.Instance.DrawLineBetweenPlayerAndLocation(interaction.roomObject.transform.position);
+            } else
+            {
+                Player.Instance.AddPositionToExistingLine(interaction.roomObject.transform.position);
+            }
+            index++;
         }
     }
 }

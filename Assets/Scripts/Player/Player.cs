@@ -95,6 +95,9 @@ public class Player : SpoonListener
 		get { return _remainingVisionDuration; }
 		set { _remainingVisionDuration = value; }
     }
+
+	[SerializeField]
+	private LineRenderer lineRenderer;
 	
 
 	void Start()
@@ -317,4 +320,34 @@ public class Player : SpoonListener
 		if (canMove)
 			FMODUnity.RuntimeManager.PlayOneShot(footstep, transform.position);
     }
+
+	public float remainingLineVisibilityTime;
+
+	public void DrawLineBetweenPlayerAndLocation(Vector3 position, float duration = 1)
+    {
+		StartCoroutine(DrawLineCoroutine(position, duration));
+	}
+
+	public void AddPositionToExistingLine(Vector3 position, float durationToResetTo = 1)
+    {
+		Vector3[] existingPositions = new Vector3[lineRenderer.positionCount + 1];
+		lineRenderer.GetPositions(existingPositions);
+		existingPositions[existingPositions.Length - 1] = position;
+
+		lineRenderer.SetPositions(existingPositions);
+		remainingLineVisibilityTime = durationToResetTo;
+	}
+
+	private IEnumerator DrawLineCoroutine(Vector3 position, float duration)
+    {
+		remainingLineVisibilityTime = duration;
+		lineRenderer.SetPositions(new Vector3[] { transform.position, position });
+		lineRenderer.enabled = true;
+		while (remainingLineVisibilityTime > 0)
+        {
+			remainingLineVisibilityTime -= Time.deltaTime;
+			yield return null;
+		}
+		lineRenderer.enabled = false;
+	}
 }
