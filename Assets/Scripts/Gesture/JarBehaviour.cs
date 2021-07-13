@@ -45,18 +45,8 @@ public class JarBehaviour : MonoBehaviour
         Bounds bounds = capsule.bounds;
         // Debug.Log(bounds.size.x + ", " + bounds.size.y);
         // snap to lower left corner
-        Vector3 ll = Camera.main.ScreenToWorldPoint(
-            new Vector3(
-                0,
-                0,
-                10
-                )
-            
-            ) + new Vector3(
-                bounds.size.x / 2.0f,
-                bounds.size.y / 2.0f,
-                0.0f
-                );
+        Vector3 ll = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10)) 
+            + new Vector3(bounds.size.x / 2.0f, bounds.size.y / 2.0f, 0.0f);
 
         transform.position = ll;
 
