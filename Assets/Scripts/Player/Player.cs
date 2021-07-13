@@ -93,6 +93,7 @@ public class Player : SpoonListener
 	public float RemainingVisionDuration
     {
 		get { return _remainingVisionDuration; }
+		set { _remainingVisionDuration = value; }
     }
 	
 

@@ -10,7 +10,13 @@ public class Hive : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerTrigger.TriggerPublish += onPlayerTriggersHive;
+        if (playerTrigger != null)
+        {
+            playerTrigger.TriggerPublish += onPlayerTriggersHive;
+        } else
+        {
+            Debug.LogError("Hive with name " + gameObject.name + " was not assigned a trigger");
+        }
     }
 
     // Update is called once per frame

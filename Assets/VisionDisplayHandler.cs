@@ -59,4 +59,10 @@ public class VisionDisplayHandler : MonoBehaviour
 			slider.value = Player.Instance.RemainingVisionDuration;
         }
     }
+
+	public void ResetSliderToEmpty()
+    {
+		slider.value = 0;
+		sliderFill.color = GameManager.ConvertVisionModeToColor(VisionMode.DEFAULT);
+    }
 }
