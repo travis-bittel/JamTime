@@ -82,4 +82,9 @@ public class CanvasScript : MonoBehaviour
 		transitionProgress = 0.0f;
 		this.nextScene = nextScene;
 	}
+
+	public void OnCloseGame()
+    {
+		Application.Quit();
+    }
 }
