@@ -24,7 +24,10 @@ public class CanvasScript : MonoBehaviour
 		else
 		{
 			_instance = this;
-			//transitionOverlayImage = GetComponent<RawImage>();
+			if (transitionOverlayImage == null)
+            {
+				transitionOverlayImage = GetComponentInChildren<RawImage>();
+			}
 			transitionOverlayImage.CrossFadeAlpha(0.0f, SceneTransitionTime / 2, false);
 		}
 	}
@@ -70,6 +73,10 @@ public class CanvasScript : MonoBehaviour
 	}
 	public void SceneChange(String nextScene)
 	{
+		if (transitionOverlayImage == null)
+		{
+			transitionOverlayImage = GetComponentInChildren<RawImage>();
+		}
 		transitionOverlayImage.CrossFadeAlpha(1.0f, SceneTransitionTime / 2, false);
 		changingScene = true;
 		transitionProgress = 0.0f;
